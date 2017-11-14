@@ -1,4 +1,4 @@
 class HomeController < ApplicationController
-    # indexv(get types, get buildings, insert into html dropdown boxes)
+    # index(get types, get buildings, insert into html dropdown boxes in view)
     # account (login, signup)
 end
