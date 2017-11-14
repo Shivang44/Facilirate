@@ -1,3 +1,46 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+html, body {
+    margin: 0;
+    padding: 0
+}
+
+h1.header {
+    margin: 0px auto;
+}
+
+div.childLeft {
+    float:left;
+}
+div.childRight {
+    float:right;
+}
+
+div.background {
+    background-image: url('../assets/Background.jpeg');
+    margin: 0px auto;
+    padding: 0px;
+    height: 949px;
+}
+
+div.surrounding{
+    padding-top: 250px;
+}
+
+div.middleBox {
+    background-color: lightgray;
+    margin: 0px auto;
+    padding-top: 0px;
+    height: 250px;
+    width: 600px;
+    text-align: center;
+}
+
+.dropdown-menu {
+  left: 50%;
+  right: auto;
+  text-align: center;
+  transform: translate(-50%, 0);
+}

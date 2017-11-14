@@ -1,0 +1,53 @@
+<%
+types = [
+    'Bathroom',
+    'Other',
+    'Classroom',
+]
+
+types.sort!
+
+%>
+
+<div class='background'>
+    <div class='surrounding'>
+        <div class='middleBox'>
+
+            <h1 class='header'>Welcome to FaciliRate</h1>
+            <br />
+
+            <div class='childLeft'>
+                <div class="dropdown">
+                  <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+                      Facility Type
+                      <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" align='center'>
+                    <%types.each do |item| %>
+                    <li><a href='#'>
+                        <%=item %>
+                    </a></li>
+                    <% end %>
+                  </ul>
+                </div>
+            </div>
+
+            <div class='childRight'>
+                <div class="dropdown">
+                  <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+                      Building
+                      <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" align='center'>
+                    <%types.each do |item| %>
+                    <li><a href='#'>
+                        <%=item %>
+                    </a></li>
+                    <% end %>
+                  </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
