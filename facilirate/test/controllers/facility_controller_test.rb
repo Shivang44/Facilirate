@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class FacilityControllerTest < ActionDispatch::IntegrationTest
+class FacilityControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end
