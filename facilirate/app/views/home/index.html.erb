@@ -1,11 +1,7 @@
 <%
-types = [
-    'Bathroom',
-    'Other',
-    'Classroom',
-]
 
-types.sort!
+# Convert types ActiveRecord to an array, and sort by it's type
+@types = @types.to_a.sort! { |a, b| a.ftype <=> b.ftype }
 
 buildings = [
     'Dreese',
@@ -32,9 +28,9 @@ buildings.sort!
                       <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu" align='center'>
-                    <%types.each do |item| %>
+                    <% @types.each do |item| %>
                     <li><a href='#'>
-                        <%=item %>
+                        <%= item.ftype %>
                     </a></li>
                     <% end %>
                   </ul>
