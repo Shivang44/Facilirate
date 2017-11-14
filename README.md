@@ -2,10 +2,10 @@
 ### Ruby on Rails Project
 
 ### Roles
-* Overall Project Manager:
-* Coding Manager:
-* Testing Manager:
-* Documentation:
+* Overall Project Manager: Matt Deavers
+* Coding Manager: Hunter Bernhardt
+* Testing Manager: Nishant Rimal
+* Documentation Manager: Shivang Saxena
 
 ### Contributions
 Please list who did what for each part of the project.
