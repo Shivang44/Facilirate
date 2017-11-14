@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   get 'user/login'
 
+  get 'home/index'
+
+  root 'home#index'
+
   get 'user/signup'
 
   get 'user/viewProfile'
