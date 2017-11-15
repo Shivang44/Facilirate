@@ -23,9 +23,12 @@ div.childRight {
 div.background {
     background-image: url('../assets/BackgroundLg.jpeg');
     background-position: center;
+    background-size: 100%;
     margin: 0px auto;
     padding: 0px;
     height:100vh;
+    background-repeat: no-repeat;
+    background-color: black;
 }
 
 div.surrounding{
