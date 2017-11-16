@@ -21,39 +21,26 @@ buildings.sort!
         <div class='boxInfo'>
 
             <h1 class='header'>Welcome to FaciliRate</h1>
-            <br />
-
+            <br/>
+            <%= form_tag("/result/showResult", method: "get") do %>
+            <% typeShow = @types.map { |val| val.ftype } %>
             <div class='childLeft'>
                 <div class="dropdown">
-                  <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
-                      Facility Type
-                      <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu" align='center'>
-                    <% @types.each do |item| %>
-                    <li><a href='#'>
-                        <%= item.ftype %>
-                    </a></li>
-                    <% end %>
-                  </ul>
+                  <%= select_tag(:facility, options_for_select(typeShow)) %>
                 </div>
             </div>
 
             <div class='childRight'>
                 <div class="dropdown">
-                  <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
-                      Building
-                      <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu" align='center'>
-                    <%buildings.each do |item| %>
-                    <li><a href='#'>
-                        <%=item %>
-                    </a></li>
-                    <% end %>
-                  </ul>
+                  <%= select_tag(:building, options_for_select(buildings)) %>
                 </div>
             </div>
+            <%= submit_tag("Search") %>
+
+            <% end %>
+
+
+           
         </div>
         </div>
     </div>

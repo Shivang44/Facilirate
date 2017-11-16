@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'result/showResult'
+
   get 'user/login'
 
   get 'user/signup'
@@ -6,6 +8,14 @@ Rails.application.routes.draw do
   get 'user/viewProfile'
 
   get 'home/index'
+
+  get 'result/showResult/:facility/:building' => "result#showResult"
+
+  get 'result/showResult/:facility' => "result#showResult"
+
+  post 'result/showResult/:facility' => "result#showResult"
+
+  # get 'result/showResult/:building' => "result#showResult"
 
   root 'home#index'
 
