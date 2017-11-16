@@ -1,5 +1,5 @@
 class ResultController < ApplicationController
   def showResult
-    @args = params[:facility]
+    @args = params[:facility] + params[:building]
   end
 end
