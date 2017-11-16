@@ -20,6 +20,30 @@ div.childRight {
     padding-right: 25%;
 }
 
+div.secondRow {
+    padding-top: 50px;
+}
+
+div.login {
+    left: 98%;
+    transform: translate(-98%, 0);
+    margin-right: 25px;
+    margin-top: 25px;
+}
+
+.btn-default {
+}
+
+.input {
+    width: 400px;
+    left: -25%;
+    transform: translate(25%, 0);
+}
+
+div.thirdRow {
+    padding-top: 10px;
+}
+
 div.background {
     background-image: url('../assets/BackgroundLg.jpeg');
     background-position: center;
@@ -32,7 +56,7 @@ div.background {
 }
 
 div.surrounding{
-    padding-top: 250px;
+    padding-top: 150px;
     position: relative;
 }
 
