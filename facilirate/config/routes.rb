@@ -11,10 +11,6 @@ Rails.application.routes.draw do
 
   get 'result/showResult/:facility/:building' => "result#showResult"
 
-  get 'result/showResult/:facility' => "result#showResult"
-
-  post 'result/showResult/:facility' => "result#showResult"
-
   # get 'result/showResult/:building' => "result#showResult"
 
   root 'home#index'
