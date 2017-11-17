@@ -3,16 +3,9 @@
 # Convert types ActiveRecord to an array, and sort by it's type
 @types = @types.to_a.sort! { |a, b| a.ftype <=> b.ftype }
 
-buildings = [
-    'Dreese',
-    'Caldwell',
-    'Scott',
-]
+@buildings = @buildings.to_a.sort! { |a, b| a.name <=> b.name }
 #buildings = ['1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1']
 #TODO - Allow scroll instead of extension
-
-buildings.sort!
-
 %>
 
 <div class='background'>
@@ -32,9 +25,10 @@ buildings.sort!
                     </div>
                 </div>
 
+                <% buildingShow = @buildings.map { |val| val.name } %>
                 <div class='childRight'>
                     <div class="dropdown">
-                        <%= select_tag(:building, options_for_select(buildings)) %>
+                        <%= select_tag(:building, options_for_select(buildingShow)) %>
                     </div>
                 </div>
 
