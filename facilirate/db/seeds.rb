@@ -32,6 +32,29 @@ rooms = [
     }
 ]
 
+reviews = [
+    {
+        review: "This is an okay thing",
+        rating: 3.5,
+        user_id: 1,
+        room_id: 1
+    },
+
+    {
+        review: "This is a good thing",
+        rating: 4.5,
+        user_id: 1,
+        room_id: 1
+    },
+
+    {
+        review: "This is a bad thing",
+        rating: 1.2,
+        user_id: 1,
+        room_id: 1
+    },
+]
+
 ftypes.each do |type|
     FacilityType.create(ftype:type)
 end
@@ -42,4 +65,8 @@ end
 
 rooms.each do |room|
     Room.create(roomNum: room[:roomNum], avgRating: room[:avgRating], building_id: room[:building_id])
+end
+
+reviews.each do |review|
+    Review.create(review: review[:review], rating: review[:rating], user_id: review[:user_id], room_id: review[:room_id])
 end

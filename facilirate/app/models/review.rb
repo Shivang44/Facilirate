@@ -1,3 +1,4 @@
 class Review < ActiveRecord::Base
-    belongs_to :user, :room
+    belongs_to :user
+    belongs_to :room
 end
