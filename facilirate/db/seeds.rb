@@ -12,16 +12,34 @@ ftypes = [
     "Classroom"
 ]
 
+buildingNames = [
+    "Scott",
+    "Caldwell",
+    "SEL",
+    "Dreese Lab"
+]
+
+rooms = [
+    {
+        roomNum: "112",
+        avgRating: 5.0,
+        building_id: 2
+    },
+    {
+        roomNum: "172",
+        avgRating: 4.2,
+        building_id: 4
+    }
+]
+
 ftypes.each do |type|
     FacilityType.create(ftype:type)
 end
 
-buildingNames = [
-    "Scott",
-    "Caldwell",
-    "SEL"
-]
-
 buildingNames.each do |bname|
     Building.create(name:bname)
+end
+
+rooms.each do |room|
+    Room.create(roomNum: room[:roomNum], avgRating: room[:avgRating], building_id: room[:building_id])
 end
