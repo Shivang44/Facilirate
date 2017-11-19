@@ -37,9 +37,10 @@ ActiveRecord::Schema.define(version: 20171119202239) do
   create_table "rooms", force: :cascade do |t|
     t.string   "roomNum"
     t.float    "avgRating"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "building_id"
+    t.integer  "facilitytype_id"
   end
 
   create_table "users", force: :cascade do |t|
