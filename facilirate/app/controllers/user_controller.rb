@@ -10,4 +10,7 @@ class UserController < ApplicationController
 
   def viewProfile
   end
+
+  def addReview
+  end
 end
