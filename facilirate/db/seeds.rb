@@ -5,3 +5,23 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+ftypes = [
+    "Bathroom",
+    "Lab",
+    "Other",
+    "Classroom"
+]
+
+ftypes.each do |type|
+    FacilityType.create(ftype:type)
+end
+
+buildingNames = [
+    "Scott",
+    "Caldwell",
+    "SEL"
+]
+
+buildingNames.each do |bname|
+    Building.create(name:bname)
+end
