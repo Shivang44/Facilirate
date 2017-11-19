@@ -1,2 +1,5 @@
 <h1>User#viewProfile</h1>
-<p>Find me in app/views/user/viewProfile.html.erb</p>
+<p>Find me in app/views/user/viewProfile
+    <%= link_to("Edit Profile", '/users/edit', class:"dropdown-item") %>
+    <%= link_to("Sign Out", '/users/sign_out', class:"dropdown-item", method: :delete) %>
+</p>

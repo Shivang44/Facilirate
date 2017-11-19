@@ -11,16 +11,10 @@
 <% showWhenLoggedIn = ["Edit Profile","Sign Out"]%>
 <div class='background'>
     <% if user_signed_in? %>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Account
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <%= link_to("Edit Profile", '/users/edit', class:"dropdown-item") %>
-                    <%= link_to("Sign Out", '/users/sign_out', class:"dropdown-item", method: :delete) %>
-                </div>
-            </div>
-    <% else %> 
+        <div class="login btn-group">
+            <%= link_to("My Account", '/user/viewProfile.html', class:"btn btn-default") %>
+        </div>
+    <% else %>
             <div class="login btn-group">
                 <%= link_to("Login/Sign Up", '/users/sign_in.html', class:"btn btn-default") %>
             </div>
@@ -59,4 +53,3 @@
         </div>
     </div>
 </div>
-
