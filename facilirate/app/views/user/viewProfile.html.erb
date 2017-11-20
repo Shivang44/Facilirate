@@ -1,5 +1,27 @@
-<h1>User#viewProfile</h1>
-<p>Find me in app/views/user/viewProfile
-    <%= link_to("Edit Profile", '/users/edit', class:"dropdown-item") %>
-    <%= link_to("Sign Out", '/users/sign_out', class:"dropdown-item", method: :delete) %>
-</p>
+<%
+    
+
+%>
+
+<div class='background'>
+    <div class='profileInformation'>
+        <div class='return'>
+            <%= link_to("Return Home", '/home/index', class:"normalizedLinks btn btn-default selections") %>
+        </div>
+
+        <div class='accountHeader'>
+        <h1>Account Information</h1>
+        <p>
+            Email: <%= current_user.email %>
+        </p>
+        <p>
+            Average Rating:
+        </p>
+        <p>
+            <%= link_to("Edit Profile", '/users/edit', class:"btn btn-default normalizedLinks") %>
+            <%= link_to("Sign Out", '/users/sign_out', class:"btn btn-default normalizedLinks", method: :delete) %>
+        </p>
+    </div>
+
+    </div>
+</div>

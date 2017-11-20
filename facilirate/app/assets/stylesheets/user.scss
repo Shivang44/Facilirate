@@ -16,16 +16,6 @@ div.devisePages{
 
 };
 
-a {
-  color:white;
-  text-decoration: underline;
-
-};
-a:hover
-{color:red;};
-a:visited
-{color:red;};
-
 div.actions {
   color:black;
   padding-top:5px;
@@ -45,4 +35,39 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+}
+
+/* Stuff for the user home page */
+a.normalizedLinks{
+    color: #333;
+    text-decoration: none;
+}
+
+a.normalizedLinks:hover {
+    color:#333;
+};
+
+a.normalizedLinks:visited {
+    color:#333;
+};
+
+div.userBG {
+    background-color: gray;
+}
+
+div.profileInformation {
+    background-color: white;
+    width: 70%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.return {
+    padding-top: 15px;
+    padding-right: 25px;
+    float: right;
+}
+.accountHeader {
+    padding-top: 15px;
+    padding-left: 25px;
 }

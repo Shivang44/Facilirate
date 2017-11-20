@@ -6,17 +6,19 @@
 @buildings = @buildings.to_a.sort! { |a, b| a.name <=> b.name }
 #buildings = ['1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1']
 #TODO - Allow scroll instead of extension
+
+@accountOptions = ["Account Home", "Sign Out"]
 %>
 
 <% showWhenLoggedIn = ["Edit Profile","Sign Out"]%>
 <div class='background'>
     <% if user_signed_in? %>
         <div class="login btn-group">
-            <%= link_to("My Account", '/user/viewProfile.html', class:"btn btn-default") %>
+            <%= link_to("My Account", '/user/viewProfile.html', class:'btn btn-default') %>
         </div>
     <% else %>
             <div class="login btn-group">
-                <%= link_to("Login/Sign Up", '/users/sign_in.html', class:"btn btn-default") %>
+                <%= link_to("Login/Sign Up", '/users/sign_in.html', class:"btn btn-default selections") %>
             </div>
     <% end %>
     <div class='surrounding'>
