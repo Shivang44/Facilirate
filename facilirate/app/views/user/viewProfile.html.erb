@@ -15,14 +15,14 @@
                 <% if current_user.avgRating != nil then %>
                     <%= current_user.avgRating.round(2) %>
                 <% else %>
-                    0
+                    0.0
                 <% end %>
-                / 5
+                / 5.0
                 <label>Number of Posts:</label>
                 <% if current_user.numberOfPosts != nil then %>
                     <%= current_user.numberOfPosts %>
                 <% else %>
-                    0.0
+                    0
                 <% end %>
             </p>
             <p>
