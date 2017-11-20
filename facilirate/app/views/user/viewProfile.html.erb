@@ -11,8 +11,19 @@
                 <label>Email:</label> <%= current_user.email %>
             </p>
             <p>
-                <label>Average Rating:</label> <%= current_user.avgRating.round(2) %>/5
-                <label>Number of Posts:</label> <%= current_user.numberOfPosts %>
+                <label>Average Rating:</label>
+                <% if current_user.avgRating != nil then %>
+                    <%= current_user.avgRating.round(2) %>
+                <% else %>
+                    0
+                <% end %>
+                / 5
+                <label>Number of Posts:</label>
+                <% if current_user.numberOfPosts != nil then %>
+                    <%= current_user.numberOfPosts %>
+                <% else %>
+                    0.0
+                <% end %>
             </p>
             <p>
                 <%= link_to("Edit Profile", '/users/edit', class:"btn btn-default normalizedLinks") %>
