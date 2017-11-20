@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 ftypes = [
     "Bathroom",
     "Lab",
@@ -50,6 +43,27 @@ reviews = [
     {
         review: "This is a bad thing",
         rating: 1.2,
+        user_id: 1,
+        room_id: 1
+    },
+
+    {
+        review: "This is an average thing",
+        rating: 3.5,
+        user_id: 1,
+        room_id: 1
+    },
+
+    {
+        review: "This is an extremely good thing",
+        rating: 5.0,
+        user_id: 1,
+        room_id: 1
+    },
+
+    {
+        review: "This is an extremely bad thing",
+        rating: 1.0,
         user_id: 1,
         room_id: 1
     },
