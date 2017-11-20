@@ -9,6 +9,9 @@ class UserController < ApplicationController
   end
 
   def viewProfile
+      @args = []
+      id = User.where('email = ?', current_user.email).first
+      @args = (Review.where('user_id = ?', id))
   end
 
   def addReview

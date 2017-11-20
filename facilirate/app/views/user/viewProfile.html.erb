@@ -1,8 +1,3 @@
-<%
-    
-
-%>
-
 <div class='background'>
     <div class='profileInformation'>
         <div class='return'>
@@ -10,18 +5,27 @@
         </div>
 
         <div class='accountHeader'>
-        <h1>Account Information</h1>
-        <p>
-            Email: <%= current_user.email %>
-        </p>
-        <p>
-            Average Rating:
-        </p>
-        <p>
-            <%= link_to("Edit Profile", '/users/edit', class:"btn btn-default normalizedLinks") %>
-            <%= link_to("Sign Out", '/users/sign_out', class:"btn btn-default normalizedLinks", method: :delete) %>
-        </p>
-    </div>
+            <h1>Account Information</h1>
+            <p>
+                <label>Email:</label> <%= current_user.email %>
+            </p>
+            <p>
+                <label>Average Rating:</label> <%= current_user.avgRating.round(2) %>/5
+                <label>Number of Posts:</label> <%= current_user.numberOfPosts %>
+            </p>
+            <p>
+                <%= link_to("Edit Profile", '/users/edit', class:"btn btn-default normalizedLinks") %>
+                <%= link_to("Sign Out", '/users/sign_out', class:"btn btn-default normalizedLinks", method: :delete) %>
+            </p>
+        </div>
 
+        <hr />
+
+        <div class='accountPosts'>
+            <h1>Facility Reviews</h1>
+            <% @args.each do |arg| %>
+                <%= render partial: "layouts/post", locals: {arg: arg} %>
+            <% end %>
+        </div>
     </div>
 </div>
