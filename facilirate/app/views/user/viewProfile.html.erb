@@ -21,11 +21,14 @@
 
         <hr />
 
+        <br />
         <div class='accountPosts'>
             <h1>Facility Reviews</h1>
-            <% @args.each do |arg| %>
-                <%= render partial: "layouts/post", locals: {arg: arg} %>
-            <% end %>
+            <div>
+                <% @args.each do |arg| %>
+                    <%= render partial: "layouts/post", locals: {arg: arg, user: current_user.email} %>
+                <% end %>
+            </div>
         </div>
     </div>
 </div>
