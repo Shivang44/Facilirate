@@ -1,6 +1,24 @@
+<%
+room = Room.where('id = ?', arg.room_id).first
+roomNum = room.roomNum
+building = (Building.where('id = ?', room.building_id).first)
+buildingName = building.name
+facility = (FacilityType.where('id = ?', room.facilitytype_id).first)
+if facility != nil then 
+    type = facility.ftype
+else
+    type = "Lab"
+end
+%>
+
 <hr />
 <p class="postRating">
     <strong><%= arg.rating %>/5</strong>
+</p>
+<p class='buildingName'>
+    <%= buildingName %>
+    <%= roomNum %>
+    (<%= type %>)
 </p>
 <p class='username'>
     <%= user %>

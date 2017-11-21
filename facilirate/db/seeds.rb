@@ -15,13 +15,15 @@ buildingNames = [
 rooms = [
     {
         roomNum: "112",
-        avgRating: 5.0,
-        building_id: 2
+        avgRating: 3.0,
+        building_id: 2,
+        facilitytype_id: 2
     },
     {
         roomNum: "172",
         avgRating: 4.2,
-        building_id: 4
+        building_id: 4,
+        facilitytype_id: 1
     }
 ]
 

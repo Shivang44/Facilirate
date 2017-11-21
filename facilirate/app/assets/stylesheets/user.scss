@@ -55,8 +55,18 @@ a.normalizedLinks:visited {
 div.profileInformation {
     background-color: white;
     width: 70%;
-    height: 100%;
     margin: 0 auto;
+    min-height: 100vh;
+    z-index: 4;
+    position:absolute;
+    left: 0;
+    right: 0;
+}
+
+div.editBoxInfo{
+    margin-top:50px;
+    height: 600px;
+    width: 30%;
 }
 
 .return {
@@ -67,6 +77,7 @@ div.profileInformation {
 .accountHeader {
     padding-top: 15px;
     padding-left: 25px;
+    margin: 0 auto;
 }
 
 div.accountPosts{
@@ -78,16 +89,40 @@ p.postRating {
     float:right;
     font-size: 20px;
 }
-p.username {
+p.buildingName {
     font-size: 20px;
+    margin-bottom: 0px;
+}
+
+p.username {
+
 }
 
 div.outer {
     width: 20%;
+    padding:0px;
 }
 
 .back {
     margin-top: 15px;
     margin-right: 25px;
     float: right;
+}
+
+.editBack {
+    margin-right: 25px;
+    float: right;
+}
+
+div.static {
+    background-image: url('../assets/BackgroundLg.jpeg');
+    background-position: center;
+    position: fixed;
+    width: 100%;
+    background-size: 100%;
+    margin: 0px auto;
+    padding: 0px;
+    height:100vh;
+    background-repeat: no-repeat;
+    background-color: black;
 }
