@@ -34,12 +34,17 @@
                 </div>
             </div>
 
+            <!--
             <% buildingShow = @buildings.map { |val| val.name } %>
             <div class='childRight'>
                 <div class="dropdown">
                     <%= select_tag(:building, options_for_select(buildingShow), prompt: "Select a Building") %>
                 </div>
+            </div>-->
+            <div class='childRight'>
+                <%= text_field_tag(:building, "", class: "form-control input") %>
             </div>
+            
 
             <div class="secondRow">
                 Enter the room number
@@ -55,3 +60,20 @@
         </div>
     </div>
 </div>
+
+<%= javascript_tag do %>
+
+var buildingAutoComplete = new autoComplete({
+    selector: document.getElementById("building"),
+    minChars: 2,
+    source: function(term, suggest){
+        term = term.toLowerCase();
+        <% buildingShow = @buildings.map { |val| val.name } %>
+        var choices = <%= raw buildingShow.to_json %>
+        var matches = [];
+        for (i=0; i< choices.length; i++)
+            if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
+        suggest(matches);
+    }
+});
+<% end %>
