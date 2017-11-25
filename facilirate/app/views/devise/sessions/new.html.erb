@@ -2,8 +2,13 @@
 <div class='background'>
     <%= link_to "Return Home", '/home/index', class:'btn btn-default back'%>
     <div class='surrounding'>
+        <%if resource.errors.any? %>
         <div class='middleBox boxInfo loginBoxInfo'></div>
         <div class='accountHeader outer boxInfo loginBoxInfo'>
+        <% else %>
+        <div class='middleBox boxInfo loginBoxInfoNoErr'></div>
+        <div class='accountHeader outer boxInfo loginBoxInfoNoErr'>
+        <% end %>
             <h2>Log in</h2>
 
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
