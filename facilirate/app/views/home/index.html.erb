@@ -25,33 +25,25 @@
         <div class='middleBox boxInfo homeBoxInfo'></div>
         <div class='boxInfo homeBoxInfo'>
             <h1 class='header'>Welcome to FaciliRate</h1>
-            <br/>
             <%= form_tag("/result/showResult", method: "get") do %>
             <% typeShow = @types.map { |val| val.ftype } %>
-            <div class='childLeft'>
-                Enter the building name
-                <br>
-                <%= text_field_tag(:building, "", class: "form-control") %>
-                <br>
-            </div>
-
-            <div class='childRight'>
-                Enter the room number
-                <br>
-                <%= text_field_tag(:room, "", class: "form-control") %>
-                <br>
-            </div>
-
-
-            <div class="secondRow">
-                <div class="dropdown">
+            <div class="input-holder">
+                <span class='childLeft'>
+                <label class="input-header">
+                    Enter the building name
+                </label>
+                    <%= text_field_tag(:building, "", class:"form-control inputs") %>
+                    <label cass="input-header">
+                    Enter the room number
+                    </label>
+                    <%= text_field_tag(:room, "", class:"form-control inputs") %>
                     <%= select_tag(:facility, options_for_select(typeShow), prompt: "Select a Facility Type") %>
+                </span>
+                <div class="thirdRow">
+                    <%= submit_tag("Search", class: "btn btn-default searchbtn") %>
                 </div>
             </div>
 
-            <div class="thirdRow">
-                <%= submit_tag("Search", class: "btn btn-default") %>
-            </div>
             <% end %>
         </div>
     </div>

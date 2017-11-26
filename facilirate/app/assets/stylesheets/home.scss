@@ -24,9 +24,6 @@ div.childRight {
     padding-right: 5%;
 }
 
-div.secondRow {
-    padding-top: 50px;
-}
 
 .login {
     left: 98%;
@@ -42,10 +39,6 @@ div.secondRow {
     width: 400px;
     left: -25%;
     transform: translate(25%, 0);
-}
-
-div.thirdRow {
-    padding-top: 10px;
 }
 
 div.background {
@@ -98,4 +91,16 @@ div.middleBox {
 a.selections{
     color: #333;
     text-decoration: none;
+}
+
+.inputs{
+    width: 45%;
+    border: 1px solid #CCC;
+    margin: auto;
+}
+.inputs:not(:last-child){
+    margin-bottom: 5px;
+}
+.searchbtn{
+    margin-top: 10px;
 }
