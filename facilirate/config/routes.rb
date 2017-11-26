@@ -10,6 +10,18 @@ Rails.application.routes.draw do
 
   get 'home/index'
 
+
+
+  # Gets an empty form to add a review
+  get 'facility/new'
+
+  # Creates the review
+  post 'facility' => 'facility#create'
+
+  # Gets the review data for a specific facility
+  get 'facility/:facilityId' => 'facility#show'
+
+
   get 'result/showResult/:facility/:building/:room' => "result#showResult"
 
   # get 'result/showResult/:building' => "result#showResult"
