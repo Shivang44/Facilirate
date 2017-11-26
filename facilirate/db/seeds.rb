@@ -1,15 +1,11 @@
+require 'open-uri'
+require 'json'
+
 ftypes = [
     "Bathroom",
     "Lab",
     "Other",
     "Classroom"
-]
-
-buildingNames = [
-    "Scott",
-    "Caldwell",
-    "SEL",
-    "Dreese Lab"
 ]
 
 rooms = [
@@ -75,8 +71,18 @@ ftypes.each do |type|
     FacilityType.create(ftype:type)
 end
 
-buildingNames.each do |bname|
-    Building.create(name:bname)
+# This fetches all OSU buildings from https://www.osu.edu/map/buildingindex.php
+# and inserts into DB.
+# OSU building id's are in the range [001, 1260]
+puts "Fetching and inserting all OSU buildings into DB. Grab some coffee, this will probably take a while."
+1261.times do |id|
+    response = open('https://www.osu.edu/map/inc/google/v2/points.php?query_type=7&query=' + ("%.3d" % id)).read
+    if (response != "null")
+        responseHash = JSON.parse(response)[0]
+        buildingName = responseHash["name"]
+        Building.create(name:buildingName)
+        puts "Fetched data for and added building \"#{buildingName}\" to the buildings DB."
+    end
 end
 
 rooms.each do |room|

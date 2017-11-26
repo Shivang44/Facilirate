@@ -29,23 +29,24 @@
             <%= form_tag("/result/showResult", method: "get") do %>
             <% typeShow = @types.map { |val| val.ftype } %>
             <div class='childLeft'>
+                Enter the building name
+                <br>
+                <%= text_field_tag(:building, "", class: "form-control") %>
+                <br>
+            </div>
+
+            <div class='childRight'>
+                Enter the room number
+                <br>
+                <%= text_field_tag(:room, "", class: "form-control") %>
+                <br>
+            </div>
+
+
+            <div class="secondRow">
                 <div class="dropdown">
                     <%= select_tag(:facility, options_for_select(typeShow), prompt: "Select a Facility Type") %>
                 </div>
-            </div>
-
-            <% buildingShow = @buildings.map { |val| val.name } %>
-            <div class='childRight'>
-                <div class="dropdown">
-                    <%= select_tag(:building, options_for_select(buildingShow), prompt: "Select a Building") %>
-                </div>
-            </div>
-
-            <div class="secondRow">
-                Enter the room number
-                <br>
-                <%= text_field_tag(:room, "", class: "form-control input") %>
-                <br>
             </div>
 
             <div class="thirdRow">
@@ -55,3 +56,20 @@
         </div>
     </div>
 </div>
+
+<%= javascript_tag do %>
+
+var buildingAutoComplete = new autoComplete({
+    selector: document.getElementById("building"),
+    minChars: 2,
+    source: function(term, suggest){
+        term = term.toLowerCase();
+        <% buildingShow = @buildings.map { |val| val.name } %>
+        var choices = <%= raw buildingShow.to_json %>
+        var matches = [];
+        for (i=0; i< choices.length; i++)
+            if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
+        suggest(matches);
+    }
+});
+<% end %>

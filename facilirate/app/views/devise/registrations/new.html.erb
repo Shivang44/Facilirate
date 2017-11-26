@@ -2,16 +2,21 @@
 <div class='background'>
     <%= link_to "Return Home", '/home/index', class:'btn btn-default back'%>
     <div class='surrounding'>
+        <%if resource.errors.any? %>
         <div class='middleBox boxInfo loginBoxInfo'></div>
         <div class='accountHeader outer boxInfo loginBoxInfo'>
+        <% else %>
+        <div class='middleBox boxInfo loginBoxInfoNoErr'></div>
+        <div class='accountHeader outer boxInfo loginBoxInfoNoErr'>
+        <% end %>
 
             <h2>Sign up</h2>
 
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <%= devise_error_messages! %>
+            <%= render 'layouts/deviseErrors', object: resource %>
 
             <div class="field">
-                <%= f.label :email %><br />
+                <%= f.label :email %>
                 <%= f.email_field :email, autofocus: true, class:"form-control" %>
             </div>
 

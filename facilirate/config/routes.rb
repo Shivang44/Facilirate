@@ -12,8 +12,6 @@ Rails.application.routes.draw do
 
   get 'result/showResult/:facility/:building/:room' => "result#showResult"
 
-  get 'result/applyFilter/:order/:result' => "result#applyFilter"
-
   # get 'result/showResult/:building' => "result#showResult"
 
   root 'home#index'
