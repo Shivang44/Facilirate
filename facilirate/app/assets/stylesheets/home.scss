@@ -32,9 +32,6 @@ div.childRight {
     margin-top: 25px;
 }
 
-.btn-default {
-}
-
 .input {
     width: 400px;
     left: -25%;
@@ -78,6 +75,8 @@ div.homeBoxInfo{
 div.middleBox {
     background-color: white;
     border-radius: 25px;
+    border-style: inset;
+
 }
 
 .dropdown-menu {
