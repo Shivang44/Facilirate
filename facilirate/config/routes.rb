@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   get 'home/index'
 
-  get 'result/showResult/:facility/:building' => "result#showResult"
+  get 'result/showResult/:facility/:building/:room' => "result#showResult"
+
+  get 'result/applyFilter/:order/:result' => "result#applyFilter"
 
   # get 'result/showResult/:building' => "result#showResult"
 

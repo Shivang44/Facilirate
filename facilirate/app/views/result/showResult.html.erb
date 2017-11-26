@@ -1,5 +1,102 @@
-<h1>Result#showResult</h1>
-<h2>
-<%=@args %>
-</h2>
-<p>Find me in app/views/result/showResult.html.erb</p>
+<div class="container-fluid">
+
+ <% types = FacilityType.all%>
+ <% building = Building.all%>
+ <% typeShow = types.map { |val| val.ftype } %>
+ <% buildingShow = building.map { |val| val.name } %>
+    <div class="row top-filter form-inline">
+     <%= form_tag("/result/showResult", method: "get") do %>
+            <div class="form-group">
+            <label>Building
+             <%= select_tag(:building, options_for_select(buildingShow), prompt: "Select a Building") %>
+            </label>
+            <label>Facility
+               <%= select_tag(:facility, options_for_select(typeShow), prompt: "Select a Facility") %>
+            </label>
+            <label>Room
+             <%= text_field_tag(:room, @tempRoom) %>
+            </label>
+            </div>
+            <%= submit_tag("Search", class: "btn btn-primary inresult") %>
+        <%end%>
+    </div>
+<hr>
+<%if @finalResult.length>0%>
+        <div class="dropdown">
+            <button class="btn btn-primary">Sort by</button>
+            <div class="dropdown-content">
+                       
+                <%if @facilParms %>
+                    <% if @buildingParms%>
+                        <% if @roomParms%>
+                            <%= link_to "Rating:Low-High", controller: "result", action: "showResult", order: "ascend", facility: @facilParms, building: @buildingParms, room: @roomParms %>
+                            <%= link_to "Rating:High-Low", controller: "result", action: "showResult", order: "descend", facility: @facilParms, building: @buildingParms, room: @roomParms%>
+                        <%else%>
+                            <%= link_to "Rating:Low-High", controller: "result", action: "showResult", order: "ascend", facility: @facilParms, building: @buildingParms%>
+                            <%= link_to "Rating:High-Low", controller: "result", action: "showResult", order: "descend", facility: @facilParms, building: @buildingParms%>
+                        <%end%>
+                    <%elsif @roomParms%>
+                             <%= link_to "Rating:Low-High", controller: "result", action: "showResult", order: "ascend", facility: @facilParms, room: @roomParms%>
+                            <%= link_to "Rating:High-Low", controller: "result", action: "showResult", order: "descend", facility: @facilParms, room: @roomParms%>
+                    <%else%>
+                            <%= link_to "Rating:Low-High", controller: "result", action: "showResult", order: "ascend", facility: @facilParms %>
+                            <%= link_to "Rating:High-Low", controller: "result", action: "showResult", order: "descend", facility: @facilParms %>
+                    <%end%>
+                <%elsif @buildingParms %>
+                    <% if @roomParms%>
+                        <%= link_to "Rating:Low-High", controller: "result", action: "showResult", order: "ascend", room: @roomParms, building: @buildingParms%>
+                        <%= link_to "Rating:High-Low", controller: "result", action: "showResult", order: "descend", room: @roomParms, building: @buildingParms%>
+                    <%else%>
+                      <%= link_to "Rating:Low-High", controller: "result", action: "showResult", order: "ascend", building: @buildingParms%>
+                      <%= link_to "Rating:High-Low", controller: "result", action: "showResult", order: "descend", building: @buildingParms%>
+                    <%end%>
+                <%elsif @roomParms%>
+                      <%= link_to "Rating:Low-High", controller: "result", action: "showResult", order: "ascend", room: @roomParms%>
+                      <%= link_to "Rating:High-Low", controller: "result", action: "showResult", order: "descend", room: @roomParms%>
+                <%end%>
+            </div>
+        </div>
+<div class="row main">
+    <table class="table table-hover table-bordered">
+    <thead class="thead-dark">
+    <tr>
+    <th scope="col">Room</th>
+    <th scope="col">Average Rating</th>
+    <th scope="col">Building</th>
+    <th scope="col">Facility Type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <%@finalResult.each do |val|%>
+    <tr id="rowselect">
+        <td>
+        <%=val[0].join('')%>
+        </td>
+        <td>
+        <%=val[1].join('')%>
+        </td>
+        <td>
+        <%=val[2].join('')%>
+        </td>
+        <td>
+        <%=val[3].join('')%>
+        </td>
+    </tr>
+    <%end%>
+    </tbody>
+<%else%>
+    <h2>
+    Sorry no results found
+    </h2>
+<%end%>
+</table>
+</div>
+</div>
+
+  <%# $.ajax("/users/render_read");  ajax call need to call appropriate method%> 
+<script>
+    $("#rowselect").click(function() {
+        console.log("Room selected::"+this.children[0].innerText);
+        console.log("Building selected::"+this.children[2].innerText);
+    });
+</script>
