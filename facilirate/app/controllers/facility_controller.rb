@@ -7,19 +7,24 @@ class FacilityController < ApplicationController
 
     # Returns a blank form to create a review for a facility
     def new
-        # Get all building names in ascending order
-        @buildings = Building.all.order(name: :asc).to_a.map {
-            |building| building.name
-        }
+        # Check if user is logged in
+        if user_signed_in?
+            # Get all building names in ascending order
+            @buildings = Building.all.order(name: :asc).to_a.map {
+                |building| building.name
+            }
 
-        # Same with facility types
-        @facilitytypes = FacilityType.all.order(ftype: :asc).to_a.map {
-            |facilityType| facilityType.ftype
-        }
+            # Same with facility types and room numbers
+            @facilitytypes = FacilityType.all.order(ftype: :asc).to_a.map {
+                |facilityType| facilityType.ftype
+            }
 
-        @rooms = Room.all.order(roomNum: :asc).to_a.map {
-            |room| room.roomNum
-        }
+            @rooms = Room.all.order(roomNum: :asc).to_a.map {
+                |room| room.roomNum
+            }
+        else
+            @buildings = ['z']
+        end
     end
 
     # actually creates review for the specified facility
