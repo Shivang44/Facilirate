@@ -28,6 +28,9 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  #Gets page for each room
+  get 'room_page/roomInfo'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
