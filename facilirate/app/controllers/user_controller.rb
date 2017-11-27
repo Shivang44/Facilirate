@@ -7,11 +7,14 @@ class UserController < ApplicationController
 
   def signup
   end
-
+  
+  # Hunter Bernhardt
   def viewProfile
-      @args = []
-      id = User.where('email = ?', current_user.email).first
-      @args = (Review.where('user_id = ?', id))
+      if !user_signed_in?
+          redirect_to controller: 'user', action: 'notLoggedIn'
+      else
+          @reviews = (Review.where('user_id = ?', User.where('email = ?', current_user.email).first))
+      end
   end
 
   def addReview

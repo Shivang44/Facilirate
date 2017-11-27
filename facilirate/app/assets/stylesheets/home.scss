@@ -76,6 +76,7 @@ div.middleBox {
     background-color: white;
     border-radius: 25px;
     border-style: inset;
+    border-color:#337ab7;
 
 }
 
@@ -96,6 +97,7 @@ a.selections{
     width: 45%;
     border: 1px solid #CCC;
     margin: auto;
+    align-content: center;
 }
 .inputs:not(:last-child){
     margin-bottom: 5px;
