@@ -7,6 +7,10 @@ $margin-result:40px;
  .rowselect:hover {
     cursor: pointer;
  }
+ .button-topright{
+     position: absolute;
+     right: 1%;
+ }
  .table{
     margin-top: $margin-result;
  }
