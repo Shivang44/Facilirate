@@ -20,12 +20,12 @@
             <%= submit_tag("Search", class: "btn btn-primary inresult") %>
         <%end%>
     </div>
-<hr>
+<hr class='results'>
 <%if @finalResult.length>0%>
         <div class="dropdown">
             <button class="btn btn-primary">Sort by</button>
             <div class="dropdown-content">
-                       
+
                 <%if @facilParms %>
                     <% if @buildingParms%>
                         <% if @roomParms%>
@@ -94,7 +94,7 @@
 </div>
 </div>
 
-  <%# $.ajax("/users/render_read");  ajax call need to call appropriate method%> 
+  <%# $.ajax("/users/render_read");  ajax call need to call appropriate method%>
 <script>
     $(".rowselect").click(function() {
         console.log("room id::"+$(this).attr('data-roomId'));
