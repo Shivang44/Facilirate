@@ -80,7 +80,9 @@ puts "Fetching and inserting all OSU buildings into DB. Grab some coffee, this w
     if (response != "null")
         responseHash = JSON.parse(response)[0]
         buildingName = responseHash["name"]
-        Building.create(name:buildingName)
+        longitude = responseHash["longitude"]
+        latitude = responseHash["latitude"]
+        Building.create(name:buildingName, longitude:longitude, latitude:latitude)
         puts "Fetched data for and added building \"#{buildingName}\" to the buildings DB."
     end
 end
