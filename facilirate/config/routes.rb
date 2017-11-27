@@ -12,8 +12,7 @@ Rails.application.routes.draw do
 
   get 'home/index'
 
-
-
+  get 'users' => "user#refresh"
 
 
   # Gets an empty form to add a review
