@@ -6,6 +6,7 @@ class FacilityController < ApplicationController
     end
 
     # Returns a blank form to create a review for a facility
+    # Written by Shivang Saxena on 11/26/2017
     def new
         # Check if user is logged in
         if !user_signed_in?
@@ -30,6 +31,42 @@ class FacilityController < ApplicationController
     # actually creates review for the specified facility
     # it takes in: rating+review, room_id, user_info
     # result of calling this action: redirection facility review of this id
+    # Written by Shivang Saxena on 11/27/2017
     def create
+        # TODO: Do a server-side validation of all params in addition to client side (html) validation
+            # Also sanitize input -- escape any javascript and html
+        # TODO: Add validations/constrictions to DB
+        building = params[:building]
+        room = params[:room]
+        facilityType = params[:facility]
+        review = params[:review]
+        rating = params[:rating]
+
+
+        # Create room if it is not already in DB
+        if Room.where(roomNum: room).count == 0
+            buildingId = Building.where(name: building).first.id # TODO: Validate building id found
+            facilityTypeId = FacilityType.where(ftype: "Bathroom").first.id
+            Room.create(roomNum: room, avgRating: 0, building_id: buildingId, facilitytype_id: facilityTypeId)
+        end
+
+        # Add review
+        roomId = Room.where(roomNum: room).first.id
+        Review.create(review: review, rating: rating, user_id: current_user.id, room_id: roomId)
+
+        # Get the number of reviews for this room so we can calculate the new average
+        reviews = Review.where(room_id: roomId).to_a
+        nReviews = reviews.length
+        reviewSum = reviews.reduce(0) { |sum, review| sum + review.rating}
+        newAvg = reviewSum / nReviews
+
+        # Update rating average for room
+        currentRoom = Room.find(roomId)
+        currentRoom.avgRating = newAvg
+        currentRoom.save
+
+
+        # Redirect user to resuts page
+        redirect_to controller: 'home', action: 'index'
     end
 end
