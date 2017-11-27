@@ -67,8 +67,9 @@
     </tr>
     </thead>
     <tbody>
+    
     <%@finalResult.each do |val|%>
-    <tr id="rowselect">
+    <tr class="rowselect" data-roomId= <%=val[4].ids[0]%> >
         <td>
         <%=val[0].join('')%>
         </td>
@@ -95,7 +96,8 @@
 
   <%# $.ajax("/users/render_read");  ajax call need to call appropriate method%> 
 <script>
-    $("#rowselect").click(function() {
+    $(".rowselect").click(function() {
+        console.log("room id::"+$(this).attr('data-roomId'));
         console.log("Room selected::"+this.children[0].innerText);
         console.log("Building selected::"+this.children[2].innerText);
     });

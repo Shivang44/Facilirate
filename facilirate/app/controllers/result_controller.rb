@@ -57,7 +57,7 @@ class ResultController < ApplicationController
             @buildingTemp = Building.where(id:(@tempVal.pluck(:building_id))).pluck(:name)
             @facilityTemp = FacilityType.where(id:(@tempVal.pluck(:facilitytype_id))).pluck(:ftype)
             @temp = []
-            @temp.push(@roomTemp,@avgRateTemp,@buildingTemp,@facilityTemp)
+            @temp.push(@roomTemp,@avgRateTemp,@buildingTemp,@facilityTemp,@tempVal)
             @finalResult.push(@temp)
         end
     end
