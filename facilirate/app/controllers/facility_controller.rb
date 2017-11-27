@@ -8,7 +8,9 @@ class FacilityController < ApplicationController
     # Returns a blank form to create a review for a facility
     def new
         # Check if user is logged in
-        if user_signed_in?
+        if !user_signed_in?
+            redirect_to controller: 'user', action: 'notLoggedIn'
+        else
             # Get all building names in ascending order
             @buildings = Building.all.order(name: :asc).to_a.map {
                 |building| building.name
@@ -22,8 +24,6 @@ class FacilityController < ApplicationController
             @rooms = Room.all.order(roomNum: :asc).to_a.map {
                 |room| room.roomNum
             }
-        else
-            @buildings = ['z']
         end
     end
 

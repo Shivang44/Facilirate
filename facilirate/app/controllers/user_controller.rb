@@ -16,4 +16,7 @@ class UserController < ApplicationController
 
   def addReview
   end
+
+  def notLoggedIn
+  end
 end

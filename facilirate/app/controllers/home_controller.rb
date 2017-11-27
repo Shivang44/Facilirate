@@ -4,4 +4,5 @@ class HomeController < ApplicationController
       @types = FacilityType.all
       @buildings = Building.all
   end
+
 end

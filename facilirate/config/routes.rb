@@ -8,7 +8,11 @@ Rails.application.routes.draw do
 
   get 'user/viewProfile'
 
+  get 'user/notLoggedIn'
+
   get 'home/index'
+
+
 
 
 
@@ -30,7 +34,7 @@ Rails.application.routes.draw do
 
   #Gets page for each room
   get 'room_page/roomInfo'
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
