@@ -1,0 +1,42 @@
+<div class='static'>
+    &nbsp;
+</div>
+<div class='pageLayout'>
+
+    <div class='return'>
+        <%= link_to("Return Home", '/home/index', class:"normalizedLinks btn btn-default selections") %>
+    </div>
+
+    <div class='accountHeader'>
+        <p>
+            <%= link_to("Edit Profile", '/users/edit', class:"btn btn-default normalizedLinks") %>
+            <%= link_to("Sign Out", '/users/sign_out', class:"btn btn-default normalizedLinks", method: :delete) %>
+        </p>
+    </div>
+
+    <hr />
+    <div class='roomDetails'>
+    <h1><%=
+    @buildingParam = params[:building]
+    %>
+    </h1>
+    <h3>
+     Room: <%=params[:room]%>
+     <br/>
+     Average Rating: <%=@averageRating%>
+   </h3>
+   <%= link_to("Review Room", '/user/addReview', class:"normalizedLinks btn btn-default selections") %>
+</div>
+    <br/>
+    <div class='roomDetails'>
+        <h2>Facility Reviews</h2>
+        <div >
+            <% @reviews.each do |review| %>
+            <%= render partial: "layouts/post", locals: {arg: review, user: review.user_id} %>
+            <%= review.rating%>
+            <%= review.created_at%>
+            <%= review.review%>
+            <% end %>
+        </div>
+    </div>
+</div>
