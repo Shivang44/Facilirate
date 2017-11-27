@@ -26,12 +26,12 @@ $margin-result:40px;
 .form-inline label:first-child{
     margin-left: 20px;
 }
-hr { 
+hr.results { 
     margin-top: 10px;
     margin-bottom: 1px;
     border-style: solid;
     border-width: 6px;
-} 
+}
 .top-filter{
     margin-top: $margin-result;
 }
