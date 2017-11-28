@@ -1,11 +1,10 @@
 <div class='static'>
     &nbsp;
 </div>
-<div class='profileInformation'>
-
     <div class='return'>
-        <%= link_to("Return Home", '/home/index', class:"normalizedLinks btn btn-default selections") %>
+        <%= link_to("Return Home", '/home/index', class:"btn btn-default button-topright") %>
     </div>
+<div class='profileInformation'>
 
     <div class='accountHeader'>
         <h1>Account Information</h1>
@@ -14,18 +13,9 @@
         </p>
         <p>
             <label>Average Rating:</label>
-            <% if current_user.avgRating != nil then %>
-            <%= current_user.avgRating.round(2) %>
-            <% else %>
-            0.0
-            <% end %>
-            / 5.0
+            <%= @avgRating.round(3) %>
             <label>Number of Posts:</label>
-            <% if current_user.numberOfPosts != nil then %>
-            <%= current_user.numberOfPosts %>
-            <% else %>
-            0
-            <% end %>
+            <%= @numberOfReviews %>
         </p>
         <p>
             <%= link_to("Edit Profile", '/users/edit', class:"btn btn-default normalizedLinks") %>
