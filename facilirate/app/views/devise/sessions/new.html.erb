@@ -12,6 +12,11 @@
             <h2>Log in</h2>
 
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+            <% flash.each do |name, msg| %>
+                <% new_msg = "Invalid email or password." %>
+                <%= content_tag :div, new_msg, id: "flash_#{name}" %>
+            <% end %>
             <div class="field">
                 <%= f.label :email %><br />
                 <%= f.email_field :email, autofocus: true, class:"form-control" %>

@@ -31,7 +31,11 @@ class UserController < ApplicationController
   end
 
   def refresh
-      redirect_to "/users/sign_up"
+      if user_signed_in?
+          redirect_to "/user/viewProfile"
+      else
+          redirect_to "/users/sign_up"
+      end
   end
 
 end
