@@ -29,4 +29,9 @@ class UserController < ApplicationController
 
   def notLoggedIn
   end
+
+  def refresh
+      redirect_to "/users/sign_up"
+  end
+
 end
