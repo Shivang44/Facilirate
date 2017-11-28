@@ -17,13 +17,15 @@
     <hr />
     <div class='roomDetails'>
     <h1><%=
-    @buildingParam = params[:building]
+    @building
     %>
     </h1>
     <h3>
-     Room: <%=params[:room]%>
+     Room: <%=@room%>
      <br/>
-     Average Rating: <%=@averageRating%>
+     Average Rating: <%=@avgReview%>
+     <br/>
+     Facility: <%=@facility%>
    </h3>
    <%= link_to("Review Room", '/facility/new', class:"normalizedLinks btn btn-default selections") %>
 </div>

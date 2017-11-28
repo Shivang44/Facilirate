@@ -1,20 +1,12 @@
 class RoomPageController < ApplicationController
   def roomInfo
 
-    @buildingParam = params[:building]
-    @building = Building.where(name:@buildingParam).pluck(:id)
-    @roomParam = params[:room]
-#    @facilityParam = params[:facility]
+    @result = Room.where(params[:id]).first
+    @avgReview = @result.avgRating
+    @building = Building.find(@result.building_id).name
+    @room = @result.roomNum
+    @facility = @result.facilitytype_id
 
-    #roomNum and building_id required
-    @result = Room.where(roomNum:@roomParam, building_id:@building).first
-    #@facility = (FacilityType.where('id = ?', @result.facilitytype_id).first)
-    #if facility != nil then
-  #      type = facility.ftype
-  #  else
-  #      type = "Other"
-  #  end
-    @averageRating = @result.avgRating
     @reviews = []
     @reviews = (Review.where('room_id = ?', @roomParm))
 
