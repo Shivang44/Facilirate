@@ -14,7 +14,7 @@ class UserController < ApplicationController
       if !user_signed_in?
           redirect_to controller: 'user', action: 'notLoggedIn'
       else
-          @reviews = (Review.where('user_id = ?', User.where('email = ?', current_user.email).first))
+          @reviews = (Review.where('user_id = ?', User.where('email = ?', current_user.email).first)).order(created_at: :desc)
 
           # Get number of posts and average rating for user
           @user_id = User.where('email': current_user.email).first.id

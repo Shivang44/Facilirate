@@ -4,6 +4,7 @@ roomNum = room.roomNum
 building = (Building.where('id = ?', room.building_id).first)
 buildingName = building.name
 facility = (FacilityType.where('id = ?', room.facilitytype_id).first)
+date = Date.parse(post.created_at.to_s)
 if facility != nil then
     type = facility.ftype
 else
@@ -20,8 +21,9 @@ end
     <%= roomNum %>
     (<%= type %>)
 </p>
+
 <p class='username'>
-    <%= user %>
+    <%= user %> - <%= date %>
 </p>
 <p>
     <%= post.review %>
