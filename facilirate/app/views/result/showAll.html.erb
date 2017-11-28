@@ -19,24 +19,28 @@
     <th data-sort="float" scope="col">Average Rating</th>
     <th data-sort="string" scope="col">Building</th>
     <th data-sort="string" scope="col">Facility Type</th>
+    <th data-sort="float" class="distanceToUserCol">Distance Away (miles)</th>
     </tr>
     </thead>
     <tbody>
     <% @rooms.each do |room|%>
     <tr class="rowselect" data-roomId= <%=room.id%> >
-    <% buildingName = Building.find(room.building_id).name %>
+    <% building = Building.find(room.building_id) %>
     <%# <% faciltyName = FacilityType.find(room.facilitytype_id).ftype%>
         <td>
-        <%=room.roomNum%>
+            <%=room.roomNum%>
         </td>
         <td>
-        <%=room.avgRating%>
+            <%=room.avgRating%>
+        </td>
+        <td class="buildingCol" data-latitude="<%= building.latitude%>" data-longitude="<%= building.longitude %>">
+            <%=building.name%>
         </td>
         <td>
-        <%=buildingName%>
+            null
         </td>
-        <td>
-        null
+        <td class="distanceToUser">
+            <!-- Distance to user will be computed on the fly with javascript at end of page -->
         </td>
     </tr>
     <%end%>
@@ -54,7 +58,42 @@
         window.location.href = "/room_page/roomInfo"+"?id"+ roomId;
     });
 
-    $("#mytable").stupidtable();
+
+    function distance(lat1, lon1, lat2, lon2, unit) {
+    	var radlat1 = Math.PI * lat1/180
+    	var radlat2 = Math.PI * lat2/180
+    	var theta = lon1-lon2
+    	var radtheta = Math.PI * theta/180
+    	var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+    	dist = Math.acos(dist)
+    	dist = dist * 180/Math.PI
+    	dist = dist * 60 * 1.1515
+    	if (unit=="K") { dist = dist * 1.609344 }
+    	if (unit=="N") { dist = dist * 0.8684 }
+    	return dist
+    }
+
+
+
+
+    // Sort results by distance to user
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(calculateDistances);
+    }
+
+    function calculateDistances(userPosition) {
+        var userLatitude = userPosition.coords.latitude;
+        var userLongitude = userPosition.coords.longitude;
+        $('.rowselect').each(function(index, row) {
+            var buildingCol = $(row).find('.buildingCol');
+            var buildingLatitude = buildingCol.attr('data-latitude');
+            var buildingLongitude = buildingCol.attr('data-longitude');
+            var distanceToUser = distance(userLatitude, userLongitude, buildingLatitude, buildingLongitude);
+            $(row).find('.distanceToUser').text(distanceToUser.toFixed(2));
+        });
+        $("#mytable").stupidtable();
+    }
+
     /*$("#sorter a").click(function(){
          var $table = $("#mytable").stupidtable();
          console.log($table);
