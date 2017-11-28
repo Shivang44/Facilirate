@@ -55,16 +55,17 @@
     });
     $("#sorter a").click(function(){
          var $table = $("#mytable").stupidtable();
-         var $th_to_sort = $table.find("thead th").eq(0);
+         console.log($table);
+         var $th_to_sort = $table.find("thead th").eq(1);
          console.log($th_to_sort);
 
         let ascend = this.innerText.indexOf("Low-High")>0;
 
         if(ascend){
-            $th_to_sort.stupidsort('asc');
+            $table.stupidsort('asc');
             console.log("asc");
         }else{
-             $th_to_sort.stupidsort('desc'); 
+             $table.stupidsort('desc'); 
              console.log("desc");
         }
     }); 
