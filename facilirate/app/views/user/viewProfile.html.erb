@@ -29,7 +29,12 @@
     <div class='accountPosts'>
         <h1>Facility Reviews</h1>
         <div >
-            <%= render partial: "layouts/post", :collection => @reviews, locals: {user: current_user.email} %>
+            <% if @reviews == nil || @reviews.length == 0 then %>
+                <hr />
+                <p><label>There are currently no reviews from this user.</label></p>
+            <% else %>
+                <%= render partial: "layouts/post", :collection => @reviews, locals: {user: current_user.email} %>
+            <% end %>
         </div>
     </div>
 </div>

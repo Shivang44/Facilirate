@@ -1,43 +1,32 @@
 <div class='static'>
     &nbsp;
 </div>
-<div class='pageLayout'>
 
-    <div class='return'>
-        <%= link_to("Return Home", '/home/index', class:"normalizedLinks btn btn-default selections") %>
-    </div>
-
-    <div class='accountHeader'>
-        <p>
-            <%= link_to("Edit Profile", '/users/edit', class:"btn btn-default normalizedLinks") %>
-            <%= link_to("Sign Out", '/users/sign_out', class:"btn btn-default normalizedLinks", method: :delete) %>
-        </p>
-    </div>
-
-    <hr />
-    <div class='roomDetails'>
-    <h1><%=
-    @building
-    %>
-    </h1>
-    <h3>
-     Room: <%=@room%>
-     <br/>
-     Average Rating: <%=@avgReview%>
-     <br/>
-     Facility: <%=@facility%>
-   </h3>
-   <%= link_to("Review Room", '/facility/new', class:"normalizedLinks btn btn-default selections") %>
+<div class='return'>
+    <%= link_to "Back", :back, class:'btn btn-default button-topright'%>
 </div>
-    <br/>
+<div class='profileInformation'>
     <div class='roomDetails'>
-        <h2>Facility Reviews</h2>
+        <h1><%=@building%></h1>
+        <p>
+            <label>Average Rating:</label> <%=@avgReview%>
+        </p>
+        <p>
+            <label>Room:</label> <%=@room%>
+            <label>Facility Type:</label> <%=@facility%>
+        </p>
+        <%= link_to("Review This Room", '/facility/new', class:"normalizedLinks btn btn-default selections") %>
+    </div>
+    <hr>
+
+    <div class='roomDetails'>
+        <h1>Facility Reviews</h1>
         <div >
-            <% @reviews.each do |review| %>
-            <%= render partial: "layouts/post", locals: {arg: review, user: review.user_id} %>
-            <%= review.rating%>
-            <%= review.created_at%>
-            <%= review.review%>
+            <% if @reviews == nil || @reviews.length == 0 then %>
+                <hr />
+                <p><label>This room does not currently have a review. Click the button above to add one.</label></p>
+            <% else %>
+                <%= render partial: "layouts/post", :collection => @reviews, locals: {user: current_user.email} %>
             <% end %>
         </div>
     </div>

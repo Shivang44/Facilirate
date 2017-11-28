@@ -20,7 +20,11 @@ class UserController < ApplicationController
           @user_id = User.where('email': current_user.email).first.id
           @userReviews = Review.where(user_id: @user_id).to_a
           @numberOfReviews = @userReviews.length
-          @avgRating = (@userReviews.reduce(0) { |sum, current| sum + current.rating }) / @numberOfReviews.to_f
+          if @numberOfReviews != 0 then
+              @avgRating = (@userReviews.reduce(0) { |sum, current| sum + current.rating }) / @numberOfReviews.to_f
+          else
+              @avgRating = 0
+          end
       end
   end
 
