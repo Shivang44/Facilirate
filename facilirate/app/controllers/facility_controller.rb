@@ -46,7 +46,7 @@ class FacilityController < ApplicationController
         # Create room if it is not already in DB
         if Room.where(roomNum: room).count == 0
             buildingId = Building.where(name: building).first.id # TODO: Validate building id found
-            facilityTypeId = FacilityType.where(ftype: "Bathroom").first.id
+            facilityTypeId = FacilityType.where(ftype: facilityType).first.id
             Room.create(roomNum: room, avgRating: 0, building_id: buildingId, facilitytype_id: facilityTypeId)
         end
 
