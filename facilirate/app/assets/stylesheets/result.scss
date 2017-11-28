@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$margin-result:40px;
+$margin-result:30px;
 
  .rowselect:hover {
     cursor: pointer;
@@ -10,6 +10,9 @@ $margin-result:40px;
  .button-topright{
      position: absolute;
      right: 1%;
+ }
+ .buildingInput{
+     width: 40%;
  }
  .table{
     margin-top: $margin-result;

@@ -10,10 +10,7 @@
 
 <%= render "layouts/searchBar" %>
 <hr class='results'>
-<%if @finalResult.length>0%>
- <% allParams = [@facilParms, @buildingParms, @roomParms]%>
-<%= render :partial => 'layouts/sortToolBar', :object => allParams %>
-
+<%= render :partial => "layouts/sortToolBar", :object => "allRooms" %>
 <div class="row main">
     <table class="table table-hover table-bordered">
     <thead class="thead-dark">
@@ -25,29 +22,26 @@
     </tr>
     </thead>
     <tbody>
-    
-    <%@finalResult.each do |val|%>
-    <tr class="rowselect" data-roomId= <%=val[4].ids[0]%> >
+    <% @rooms.each do |room|%>
+    <tr class="rowselect" data-roomId= <%=room.id%> >
+    <% buildingName = Building.find(room.building_id).name %>
+    <%# <% faciltyName = FacilityType.find(room.facilitytype_id).ftype%> 
         <td>
-        <%=val[0].join('')%>
+        <%=room.roomNum%>
         </td>
         <td>
-        <%=val[1].join('')%>
+        <%=room.avgRating%>
         </td>
         <td>
-        <%=val[2].join('')%>
+        <%=buildingName%>
         </td>
         <td>
-        <%=val[3].join('')%>
+        null
         </td>
     </tr>
     <%end%>
     </tbody>
-<%else%>
-    <h2>
-    Sorry no results found
-    </h2>
-<%end%>
+
 </table>
 </div>
 </div>

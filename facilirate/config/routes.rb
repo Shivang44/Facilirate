@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'home/index'
 
   get 'users' => "user#refresh"
-
+  
 
   # Gets an empty form to add a review
   get 'facility/new'
@@ -27,8 +27,13 @@ Rails.application.routes.draw do
 
   get 'result/showResult/:facility/:building/:room' => "result#showResult"
 
-  # get 'result/showResult/:building' => "result#showResult"
+  get 'result/showResult' => "result#showResult"
 
+  get 'result/showAll' => "result#showAll"
+
+  get 'result/filterResult'
+
+  get 'result/showActualResult' => "result#showActualResult"
   root 'home#index'
 
   #Gets page for each room
