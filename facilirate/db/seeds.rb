@@ -88,7 +88,7 @@ puts "Fetching and inserting all OSU buildings into DB. Grab some coffee, this w
 end
 
 rooms.each do |room|
-    Room.create(roomNum: room[:roomNum], avgRating: room[:avgRating], building_id: room[:building_id])
+    Room.create(roomNum: room[:roomNum], avgRating: room[:avgRating], building_id: room[:building_id], facilitytype_id: room[:facilitytype_id])
 end
 
 reviews.each do |review|

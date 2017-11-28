@@ -11,9 +11,8 @@ Rails.application.routes.draw do
   get 'user/notLoggedIn'
 
   get 'home/index'
-
-  get 'users' => "user#refresh"
   
+  get 'user' => "user#refresh"
 
   # Gets an empty form to add a review
   get 'facility/new'
