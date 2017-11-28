@@ -12,11 +12,11 @@
 <hr class='results'>
 <%= render :partial => "layouts/sortToolBar", :object => "allRooms" %>
 <div class="row main">
-    <table class="table table-hover table-bordered">
+    <table class="table table-hover table-bordered" id="mytable">
     <thead class="thead-dark">
     <tr>
     <th scope="col">Room</th>
-    <th scope="col">Average Rating</th>
+    <th data-sort="float" scope="col">Average Rating</th>
     <th scope="col">Building</th>
     <th scope="col">Facility Type</th>
     </tr>
@@ -50,8 +50,23 @@
   <%# $.ajax("/users/render_read");  ajax call need to call appropriate method%>
 <script>
     $(".rowselect").click(function() {
-        console.log("room id::"+$(this).attr('data-roomId'));
-        console.log("Room selected::"+this.children[0].innerText);
-        console.log("Building selected::"+this.children[2].innerText);
+        var roomId = $(this).attr('data-roomId');
+        window.location.href = "/room_page/roomInfo"+"?id"+ roomId;
     });
+    $("#sorter a").click(function(){
+         var $table = $("#mytable").stupidtable();
+         var $th_to_sort = $table.find("thead th").eq(0);
+         console.log($th_to_sort);
+
+        let ascend = this.innerText.indexOf("Low-High")>0;
+
+        if(ascend){
+            $th_to_sort.stupidsort('asc');
+            console.log("asc");
+        }else{
+             $th_to_sort.stupidsort('desc'); 
+             console.log("desc");
+        }
+    }); 
+   
 </script>

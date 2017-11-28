@@ -15,3 +15,4 @@
 //= require turbolinks
 //= require auto-complete
 //= require_tree .
+//= require stupidtable.min

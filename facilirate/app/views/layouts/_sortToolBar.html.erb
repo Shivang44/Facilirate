@@ -1,7 +1,12 @@
         <div class="dropdown">
             <button class="btn btn-primary btn-sm">Sort by</button>
-            <div class="dropdown-content">
-                <%= link_to "Rating:Low-High", controller: "result", action: "filterResult", order: "ascend", allParm: sortToolBar%>
-                <%= link_to "Rating:High-Low", controller: "result", action: "filterResult", order: "descend", allParm: sortToolBar%>
+            <div class="dropdown-content" id="sorter">
+                <%= link_to "Rating:Low-High" %>
+                <%= link_to "Rating:High-Low" %>
             </div>
         </div>
+
+          <%# <%= link_to "Rating:Low-High", controller: "result", action: "filterResult", order: "ascend", allParm: sortToolBar%>
+          <%#  <%= link_to "Rating:High-Low", controller: "result", action: "filterResult", order: "descend", allParm: sortToolBar%>
+
+                
