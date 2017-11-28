@@ -7,7 +7,7 @@ class UserController < ApplicationController
 
   def signup
   end
-  
+
   # Hunter Bernhardt
   def viewProfile
       if !user_signed_in?
@@ -22,4 +22,9 @@ class UserController < ApplicationController
 
   def notLoggedIn
   end
+
+  def refresh
+      redirect_to "/users/sign_up"
+  end
+
 end
