@@ -15,17 +15,17 @@
     <table class="table table-hover table-bordered" id="mytable">
     <thead class="thead-dark">
     <tr>
-    <th scope="col">Room</th>
+    <th data-sort="string" scope="col">Room</th>
     <th data-sort="float" scope="col">Average Rating</th>
-    <th scope="col">Building</th>
-    <th scope="col">Facility Type</th>
+    <th data-sort="string" scope="col">Building</th>
+    <th data-sort="string" scope="col">Facility Type</th>
     </tr>
     </thead>
     <tbody>
     <% @rooms.each do |room|%>
     <tr class="rowselect" data-roomId= <%=room.id%> >
     <% buildingName = Building.find(room.building_id).name %>
-    <%# <% faciltyName = FacilityType.find(room.facilitytype_id).ftype%> 
+    <%# <% faciltyName = FacilityType.find(room.facilitytype_id).ftype%>
         <td>
         <%=room.roomNum%>
         </td>
@@ -53,7 +53,9 @@
         var roomId = $(this).attr('data-roomId');
         window.location.href = "/room_page/roomInfo"+"?id"+ roomId;
     });
-    $("#sorter a").click(function(){
+
+    $("#mytable").stupidtable();
+    /*$("#sorter a").click(function(){
          var $table = $("#mytable").stupidtable();
          console.log($table);
          var $th_to_sort = $table.find("thead th").eq(1);
@@ -65,9 +67,9 @@
             $table.stupidsort('asc');
             console.log("asc");
         }else{
-             $table.stupidsort('desc'); 
+             $table.stupidsort('desc');
              console.log("desc");
         }
-    }); 
-   
+    }); */
+
 </script>
