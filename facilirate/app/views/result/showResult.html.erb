@@ -11,8 +11,6 @@
 <%= render "layouts/searchBar" %>
 <hr class='results'>
 <%if @finalResult.length>0%>
- <% allParams = [@facilParms, @buildingParms, @roomParms]%>
-<%= render :partial => 'layouts/sortToolBar', :object => allParams %>
 
 <div class="row main">
     <table class="table table-hover table-bordered">

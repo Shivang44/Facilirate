@@ -10,7 +10,6 @@
 
 <%= render "layouts/searchBar" %>
 <hr class='results'>
-<%= render :partial => "layouts/sortToolBar", :object => "allRooms" %>
 <div class="row main">
     <table class="table table-hover table-bordered" id="mytable">
     <thead class="thead-dark">
@@ -26,7 +25,7 @@
     <% @rooms.each do |room|%>
     <tr class="rowselect" data-roomId= <%=room.id%> >
     <% building = Building.find(room.building_id) %>
-    <%# <% faciltyName = FacilityType.find(room.facilitytype_id).ftype%>
+    <% faciltyName = FacilityType.find(room.facilitytype_id).ftype%>
         <td>
             <%=room.roomNum%>
         </td>
@@ -37,7 +36,7 @@
             <%=building.name%>
         </td>
         <td>
-            null
+           <%=faciltyName%>
         </td>
         <td class="distanceToUser">
             <!-- Distance to user will be computed on the fly with javascript at end of page -->
@@ -58,7 +57,6 @@
         window.location.href = "/room_page/roomInfo"+"?id"+ roomId;
     });
 
-
     /* Algorithm used from http://www.geodatasource.com/developers/javascript */
     function distance(lat1, lon1, lat2, lon2) {
     	var radlat1 = Math.PI * lat1/180;
@@ -71,8 +69,6 @@
     	dist = dist * 60 * 1.1515;
     	return dist;
     }
-
-
 
 
     // Sort results by distance to user
@@ -94,21 +90,5 @@
         $('.distanceToUserCol').stupidsort();
     }
 
-    /*$("#sorter a").click(function(){
-         var $table = $("#mytable").stupidtable();
-         console.log($table);
-         var $th_to_sort = $table.find("thead th").eq(1);
-         console.log($th_to_sort);
-
-        let ascend = this.innerText.indexOf("Low-High")>0;
-
-        if(ascend){
-            $table.stupidsort('asc');
-            console.log("asc");
-        }else{
-             $table.stupidsort('desc');
-             console.log("desc");
-        }
-    }); */
 
 </script>

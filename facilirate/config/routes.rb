@@ -32,7 +32,6 @@ Rails.application.routes.draw do
 
   get 'result/filterResult'
 
-  get 'result/showActualResult' => "result#showActualResult"
   root 'home#index'
 
   #Gets page for each room
