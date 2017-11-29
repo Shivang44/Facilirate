@@ -5,6 +5,7 @@ class FacilityController < ApplicationController
     def show
     end
 
+    # Written by Hunter Bernhardt on 11/29/2017
     def delete
         postID = params[:id]
         review = Review.find(postID)

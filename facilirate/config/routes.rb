@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   # Creates the review
   post 'facility' => 'facility#create'
 
+  # Deletes a review
   delete 'facility' => 'facility#delete', :as => 'delete_post'
 
   # Gets the review data for a specific facility
