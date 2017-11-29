@@ -3,7 +3,7 @@ class RoomPageController < ApplicationController
 
     @result = Room.find(params[:id])
 
-    @avgReview = params[:id]#@result.avgRating
+    @avgReview = @result.avgRating
     @building = Building.find(@result.building_id).name
     @room = @result.roomNum
     @facility = @result.facilitytype_id
