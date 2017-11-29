@@ -3,7 +3,7 @@
 </div>
 
 <div class='return'>
-    <%= link_to "Back", :back, class:'btn btn-default button-topright'%>
+    <%= link_to "Return to Home", '/home/index', class:'btn btn-default button-topright'%>
 </div>
 <div class='profileInformation'>
     <div class='roomDetails'>
@@ -26,12 +26,10 @@
                 <hr />
                 <p><label>This room does not currently have a review. Click the button above to add one.</label></p>
             <% else %>
-                <% if user_signed_in? %>
                     <% @reviews.each do |review| %>
                         <% username = User.find(review.user_id).email %>
                         <%= render partial: "layouts/post", :object => review, locals: {user: username} %>
                     <% end %>
-                <% end %>
             <% end %>
         </div>
     </div>

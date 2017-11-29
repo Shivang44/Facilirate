@@ -13,7 +13,7 @@ class RoomPageController < ApplicationController
     @facility = @result.facilitytype_id
 
     @reviews = []
-    @reviews = (Review.where('room_id = ?', params[:id]))
+    @reviews = (Review.where('room_id = ?', params[:id])).order(created_at: :desc)
 
 end
 end
