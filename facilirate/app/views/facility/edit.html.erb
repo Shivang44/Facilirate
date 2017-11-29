@@ -4,7 +4,8 @@
         <div class='middleBox boxInfo newReviewBoxInfo'></div>
         <div class='accountHeader outer boxInfo newReviewBoxInfo'>
             <h2>Review a Room</h2>
-<%= form_tag("/facility/editReview?id="+@id, method: :post)%>
+
+<form action="/facility/editReview" method="POST">
     <!-- TODO:
     - Validate all these things
     - Make the building name and room number auto complete
@@ -32,7 +33,8 @@
     <label class="input-header">
         Select the facility type
     </label>
-    <%= select_tag(:facility, options_for_select(@facilitytypes), class:"form-control") %>
+    <%= select_tag(:facility,@facilityType, options_for_select(@facilitytypes), value:@facilityType, class:"form-control",value:@facilityType, readonly:true) %>
+
     <br />
 
     <label class="input-header">

@@ -1,6 +1,7 @@
  <% types = FacilityType.all%>
  <% building = Building.all%>
  <% typeShow = types.map { |val| val.ftype } %>
+ <% typeShow.sort! %>
  <% buildingShow = building.map { |val| val.name } %>
     <div class="row top-filter form-inline">
      <%= form_tag("/result/showResult", method: "get") do %>

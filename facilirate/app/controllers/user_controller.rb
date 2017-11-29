@@ -10,18 +10,17 @@ class UserController < ApplicationController
 
   # Hunter Bernhardt
   # Updated by Shivang Saxena on 11/27/2017 to include number of posts and avg rating for user
+
   def viewProfile
       if !user_signed_in?
           redirect_to controller: 'user', action: 'notLoggedIn'
       else
-          @reviews = (Review.where('user_id = ?', User.where('email = ?', current_user.email).first)).order(created_at: :desc)
+          user = User.where('email': current_user.email).first
+          @reviews = (Review.where('user_id = ?', user).order(created_at: :desc))
 
-          # Get number of posts and average rating for user
-          @user_id = User.where('email': current_user.email).first.id
-          @userReviews = Review.where(user_id: @user_id).to_a
-          @numberOfReviews = @userReviews.length
+          @numberOfReviews = @reviews.length
           if @numberOfReviews != 0 then
-              @avgRating = (@userReviews.reduce(0) { |sum, current| sum + current.rating }) / @numberOfReviews.to_f
+              @avgRating = (@reviews.reduce(0) { |sum, current| sum + current.rating }) / @numberOfReviews.to_f
           else
               @avgRating = 0
           end

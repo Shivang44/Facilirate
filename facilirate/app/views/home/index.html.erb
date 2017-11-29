@@ -1,16 +1,3 @@
-<%
-
-# Convert types ActiveRecord to an array, and sort by it's type
-@types = @types.to_a.sort! { |a, b| a.ftype <=> b.ftype }
-
-@buildings = @buildings.to_a.sort! { |a, b| a.name <=> b.name }
-#buildings = ['1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1']
-#TODO - Allow scroll instead of extension
-
-@accountOptions = ["Account Home", "Sign Out"]
-%>
-
-<% showWhenLoggedIn = ["Edit Profile","Sign Out"]%>
 <div class='background'>
     <% if user_signed_in? %>
         <div class="login btn-group">

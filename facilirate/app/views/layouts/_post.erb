@@ -28,4 +28,18 @@ end
 <p>
     <%= post.review %>
 </p>
+<% # if current_user == post.user_id%>
+<!--id:post.id, review:post.review,rating:post.rating,building:building,room:room,facility:facility
+:id=>post.id, :review=>post.review,:rating=>post.rating,:building=>building,:room=>room,:facility=>facility-->
+<%=link_to "Edit", "../facility/edit?id="+post.id.to_s+"&review="+post.review+"&rating="+post.rating.to_s+"&building="+buildingName.to_s+"&room="+roomNum.to_s+"&facility="+facility.ftype.to_s, class:"btn btn-default normalizedLinks"%>
+<%#link_to "Delete", "facility/delete", data: { confirm: "Delete Review?" }%>
+<%#end%>
+<br />
+<% if user_signed_in? && current_user.email == User.find(post.user_id).email then %>
+    <%= link_to 'Delete', delete_post_path(:id => post.id, :page => url_for(:only_path => false)), method: "delete" %>
+<% end %>
+<br />
+<% if user_signed_in? && current_user.email == User.find(post.user_id).email then %>
+    <%= link_to 'Delete', delete_post_path(:id => post.id, :page => url_for(:only_path => false)), method: "delete" %>
+<% end %>
 <br />
