@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'user/notLoggedIn'
 
   get 'home/index'
-  
+
   get 'user' => "user#refresh"
 
   # Gets an empty form to add a review
@@ -36,6 +36,9 @@ Rails.application.routes.draw do
 
   #Gets page for each room
   get 'room_page/roomInfo'
+
+  #Edits review
+  post 'facility/edit' => 'facility#edit'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
