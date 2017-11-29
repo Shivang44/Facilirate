@@ -94,8 +94,19 @@
 
     // Sort results by distance to user
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(calculateDistances);
+        navigator.geolocation.getCurrentPosition(calculateDistances, locationError, {timeout: 5000});
     }
+
+    var shownError = false;
+    function locationError(err) {
+      if (!shownError) {
+          alert('Could not get location. Make sure you are on a WiFi network. Distance to user will not be shown.');
+          $("#retrieveResultsText").hide();
+          $("#resultsTable").toggleClass('hidden');
+          shownError = true;          
+      }
+    };
+
 
     function calculateDistances(userPosition) {
         var userLatitude = userPosition.coords.latitude;
