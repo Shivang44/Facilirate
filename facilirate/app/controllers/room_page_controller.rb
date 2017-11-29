@@ -1,4 +1,8 @@
 class RoomPageController < ApplicationController
+
+  #Gets information for a particular room and creates a page for it
+  #Written by Dilroop Raju on 11/26/2017
+
   def roomInfo
 
     @result = Room.find(params[:id])
