@@ -34,7 +34,7 @@ a.sorter:hover{
 .form-inline label:first-child{
     margin-left: 20px;
 }
-hr.results { 
+hr.results {
     margin-top: 10px;
     margin-bottom: 1px;
     border-style: solid;
@@ -67,4 +67,10 @@ hr.results {
 }
 .dropdown:hover .dropdown-content {
     display: block;
+}
+.hidden {
+    display: none;
+}
+.center {
+    text-align: center;
 }
