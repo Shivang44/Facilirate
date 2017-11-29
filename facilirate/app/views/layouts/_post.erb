@@ -35,3 +35,7 @@ end
 <%#link_to "Delete", "facility/delete", data: { confirm: "Delete Review?" }%>
 <%#end%>
 <br />
+<% if user_signed_in? && current_user.email == User.find(post.user_id).email then %>
+    <%= link_to 'Delete', delete_post_path(:id => post.id, :page => url_for(:only_path => false)), method: "delete" %>
+<% end %>
+<br />
