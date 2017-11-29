@@ -35,5 +35,11 @@ end
     <%= post.review %>
 </div>
 
+<% if user_signed_in? && current_user.email == User.find(post.user_id).email then %>
+    <%=link_to "Edit", "../facility/edit?id="+post.id.to_s+"&review="+post.review+"&rating="+post.rating.to_s+"&building="+buildingName.to_s+"&room="+roomNum.to_s+"&facility="+facility.ftype.to_s%>
+    |
+    <%=link_to 'Delete', delete_post_path(:id => post.id),  method: "delete" %>
+
+<% end %>
 
 <br />
