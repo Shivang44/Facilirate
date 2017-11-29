@@ -1,7 +1,6 @@
 class ResultController < ApplicationController
-    
+
     def showAll
-        @rooms = Room.all
     end
 
     def showResult
@@ -10,14 +9,16 @@ class ResultController < ApplicationController
 
         calculateResults params  #uses user entered filter and return with necessary array to show
 
-        @finalResult = [] 
+        @finalResult = []
         if(@result)
             @result = @result.pluck(:id) #has list of all id that matches result
             @result.each do |val|
-                @tempVal = Room.find(val) 
+                @tempVal = Room.find(val)
                 @finalResult.push(@tempVal)
             end
         end
     end
+
+
 
 end

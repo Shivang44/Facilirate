@@ -13,21 +13,25 @@
 <%if @finalResult.length>0%>
 
 <div class="row main">
-    <table class="table table-hover table-bordered">
+    <h2 class="center" id="retrieveResultsText">Retrieving results...</h2>
+    <table class="table table-hover table-bordered hidden" id="resultsTable">
     <thead class="thead-dark">
     <tr>
-    <th scope="col">Room
+    <th data-sort="string" scope="col">Room
      <span class="caret"></span>
     </th>
-    <th scope="col">Average Rating
+    <th data-sort="float" scope="col">Average Rating
      <span class="caret"></span>
     </th>
-    <th scope="col">Building
+    <th data-sort="string" scope="col">Building
      <span class="caret"></span>
     </th>
-    <th scope="col">Facility Type
+    <th data-sort="string" scope="col">Facility Type
      <span class="caret"></span>
     </th>
+    <th data-sort="float" class="distanceToUserCol">Distance Away (miles)</th>
+     <span class="caret"></span>
+    </tr>
     </tr>
     </thead>
     <tbody>
@@ -37,16 +41,19 @@
      <% building = Building.find(val.building_id) %>
     <% faciltyName = FacilityType.find(val.facilitytype_id).ftype%>
         <td>
-        <%=val.roomNum%>
+            <%=val.roomNum%>
         </td>
         <td>
-        <%=val.avgRating%>
+            <%=val.avgRating%>
+        </td>
+        <td class="buildingCol" data-latitude="<%= building.latitude%>" data-longitude="<%= building.longitude %>">
+            <%=building.name%>
         </td>
         <td>
-        <%=building.name%>
+            <%=faciltyName%>
         </td>
-        <td>
-        <%=faciltyName%>
+        <td class="distanceToUser">
+            <!-- Distance to user will be computed on the fly with javascript at end of page -->
         </td>
     </tr>
     <%end%>
@@ -67,6 +74,43 @@
         var roomId = $(this).attr('data-roomId');
         console.log("Room selected::"+this.children[0].innerText);
         console.log("Building selected::"+this.children[2].innerText);
-        window.location.href = "/room_page/roomInfo"+"?id"+ roomId;
+        window.location.href = "/room_page/roomInfo"+"?id="+ roomId;
     });
+
+
+    /* Algorithm used from http://www.geodatasource.com/developers/javascript */
+    function distance(lat1, lon1, lat2, lon2) {
+        var radlat1 = Math.PI * lat1/180;
+        var radlat2 = Math.PI * lat2/180;
+        var theta = lon1-lon2;
+        var radtheta = Math.PI * theta/180;
+        var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+        dist = Math.acos(dist);
+        dist = dist * 180/Math.PI;
+        dist = dist * 60 * 1.1515;
+        return dist;
+    }
+
+
+    // Sort results by distance to user
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(calculateDistances);
+    }
+
+    function calculateDistances(userPosition) {
+        var userLatitude = userPosition.coords.latitude;
+        var userLongitude = userPosition.coords.longitude;
+        $('.rowselect').each(function(index, row) {
+            var buildingCol = $(row).find('.buildingCol');
+            var buildingLatitude = buildingCol.attr('data-latitude');
+            var buildingLongitude = buildingCol.attr('data-longitude');
+            var distanceToUser = distance(userLatitude, userLongitude, buildingLatitude, buildingLongitude);
+            $(row).find('.distanceToUser').text(distanceToUser.toFixed(2));
+        });
+        $("#resultsTable").stupidtable();
+        $('.distanceToUserCol').stupidsort();
+        $("#retrieveResultsText").hide();
+        $("#resultsTable").toggleClass('hidden');
+    }
+
 </script>
