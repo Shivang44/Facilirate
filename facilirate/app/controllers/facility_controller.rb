@@ -30,11 +30,11 @@ class FacilityController < ApplicationController
         currTotal = currTotal - review.rating
         if(allReviews.length - 1 > 0) then
             currTotal = currTotal / (allReviews.length - 1)
-            room.avgRating = currTotal
-            room.save
         else
             currTotal = 0.0
         end
+        room.avgRating = currTotal
+        room.save
         review.destroy
         redirect_to(:back)
     end

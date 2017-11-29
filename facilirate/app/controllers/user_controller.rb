@@ -1,16 +1,6 @@
 class UserController < ApplicationController
-    # merge sign up and login
-# GET this route => Get login form
-# POST to this form => Log in user (username & password as params), redirect to home page
-  def login
-  end
-
-  def signup
-  end
-
   # Hunter Bernhardt
   # Updated by Shivang Saxena on 11/27/2017 to include number of posts and avg rating for user
-
   def viewProfile
       if !user_signed_in?
           redirect_to controller: 'user', action: 'notLoggedIn'
