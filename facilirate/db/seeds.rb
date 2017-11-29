@@ -8,65 +8,6 @@ ftypes = [
     "Classroom"
 ]
 
-rooms = [
-    {
-        roomNum: "112",
-        avgRating: 3.0,
-        building_id: 2,
-        facilitytype_id: 2
-    },
-    {
-        roomNum: "172",
-        avgRating: 4.2,
-        building_id: 4,
-        facilitytype_id: 1
-    }
-]
-
-reviews = [
-    {
-        review: "This is an okay thing",
-        rating: 3.5,
-        user_id: 1,
-        room_id: 1
-    },
-
-    {
-        review: "This is a good thing",
-        rating: 4.5,
-        user_id: 1,
-        room_id: 1
-    },
-
-    {
-        review: "This is a bad thing",
-        rating: 1.2,
-        user_id: 1,
-        room_id: 1
-    },
-
-    {
-        review: "This is an average thing",
-        rating: 3.5,
-        user_id: 1,
-        room_id: 1
-    },
-
-    {
-        review: "This is an extremely good thing",
-        rating: 5.0,
-        user_id: 1,
-        room_id: 1
-    },
-
-    {
-        review: "This is an extremely bad thing",
-        rating: 1.0,
-        user_id: 1,
-        room_id: 1
-    },
-]
-
 ftypes.each do |type|
     FacilityType.create(ftype:type)
 end
@@ -85,12 +26,4 @@ puts "Fetching and inserting all OSU buildings into DB. Grab some coffee, this w
         Building.create(name:buildingName, longitude:longitude, latitude:latitude)
         puts "Fetched data for and added building \"#{buildingName}\" to the buildings DB."
     end
-end
-
-rooms.each do |room|
-    Room.create(roomNum: room[:roomNum], avgRating: room[:avgRating], building_id: room[:building_id], facilitytype_id: room[:facilitytype_id])
-end
-
-reviews.each do |review|
-    Review.create(review: review[:review], rating: review[:rating], user_id: review[:user_id], room_id: review[:room_id])
 end
