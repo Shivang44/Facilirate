@@ -37,11 +37,13 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  #Gets page for each room
+  # Gets page for each room
   get 'room_page/roomInfo'
 
-  #Edits review
-  post 'facility/edit' => 'facility#edit'
+  # Gets edit review page
+  get 'facility/edit'
+  # Edits review
+  post 'facility/editReview' => 'facility#editReview'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
