@@ -28,6 +28,9 @@
     <th scope="col">Facility Type
      <span class="caret"></span>
     </th>
+    <th data-sort="float" class="distanceToUserCol">Distance Away (miles)</th>
+     <span class="caret"></span>
+    </tr>
     </tr>
     </thead>
     <tbody>
@@ -35,6 +38,7 @@
     <%@finalResult.each do |val|%>
     <tr class="rowselect" data-roomId= <%=val[4].ids[0]%> >
         <td>
+            <% puts val %>
         <%=val[0].join('')%>
         </td>
         <td>
@@ -67,4 +71,39 @@
         console.log("Building selected::"+this.children[2].innerText);
         window.location.href = "/room_page/roomInfo"+"?id"+ roomId;
     });
+
+
+    /* Algorithm used from http://www.geodatasource.com/developers/javascript */
+    function distance(lat1, lon1, lat2, lon2) {
+        var radlat1 = Math.PI * lat1/180;
+        var radlat2 = Math.PI * lat2/180;
+        var theta = lon1-lon2;
+        var radtheta = Math.PI * theta/180;
+        var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+        dist = Math.acos(dist);
+        dist = dist * 180/Math.PI;
+        dist = dist * 60 * 1.1515;
+        return dist;
+    }
+
+
+    // Sort results by distance to user
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(calculateDistances);
+    }
+
+    function calculateDistances(userPosition) {
+        var userLatitude = userPosition.coords.latitude;
+        var userLongitude = userPosition.coords.longitude;
+        $('.rowselect').each(function(index, row) {
+            var buildingCol = $(row).find('.buildingCol');
+            var buildingLatitude = buildingCol.attr('data-latitude');
+            var buildingLongitude = buildingCol.attr('data-longitude');
+            var distanceToUser = distance(userLatitude, userLongitude, buildingLatitude, buildingLongitude);
+            $(row).find('.distanceToUser').text(distanceToUser.toFixed(2));
+        });
+        $("#mytable").stupidtable();
+        $('.distanceToUserCol').stupidsort();
+    }
+
 </script>

@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
         @temp = params[:building]
         @building = Building.where(name:@temp).pluck(:id)
     end
-   
+
     #get result from the applied filters
     if(params[:room] && params[:room].length > 0) then
         @tempRoom = params[:room]
@@ -30,12 +30,12 @@ class ApplicationController < ActionController::Base
                 @result = Room.where(roomNum:@tempRoom, building_id:@building)
             end
         elsif(@facil && @facil.length>0)#just facility is given
-            @result = Room.where(roomNum:@tempRoom, facilitytype_id:@facil)    
+            @result = Room.where(roomNum:@tempRoom, facilitytype_id:@facil)
         else #no building and facility given just room
             @result = Room.where(roomNum:@tempRoom)
-        end  
+        end
 
-    elsif (@building && @building.length > 0) 
+    elsif (@building && @building.length > 0)
 
         if(@facil && @facil.length>0) #building is given and facility is given
             @result = Room.where(building_id:@building, facilitytype_id:@facil)
@@ -46,11 +46,12 @@ class ApplicationController < ActionController::Base
     elsif (@facil && @facil.length>0) #no building given, no room given, just facility type
             @result = Room.where(facilitytype_id:@facil)
     else
-        redirect_to "/result/showAll" #nothing was given
+        #redirect_to "/result/showAll" #nothing was given
+        @result = Room.all
     end
 
     return @result
 
   end
-  
+
 end

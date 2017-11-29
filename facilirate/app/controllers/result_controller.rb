@@ -1,7 +1,6 @@
 class ResultController < ApplicationController
-    
+
     def showAll
-        @rooms = Room.all
     end
 
     def showResult
@@ -10,11 +9,11 @@ class ResultController < ApplicationController
 
         calculateResults params  #uses user entered filter and return with necessary array to show
 
-        @finalResult = [] 
+        @finalResult = []
         if(@result)
             @result = @result.pluck(:id) #has list of all id that matches result
             @result.each do |val|
-                @tempVal = Room.where(id:val) 
+                @tempVal = Room.where(id:val)
                 @roomTemp = @tempVal.pluck(:roomNum)
                 @avgRateTemp = @tempVal.pluck(:avgRating)
                 @buildingTemp = Building.where(id:(@tempVal.pluck(:building_id))).pluck(:name)
@@ -25,5 +24,7 @@ class ResultController < ApplicationController
             end
         end
     end
+
+
 
 end

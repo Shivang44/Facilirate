@@ -27,7 +27,7 @@
     </tr>
     </thead>
     <tbody>
-    <% @rooms.each do |room|%>
+    <% @finalResult.each do |room|%>
     <tr class="rowselect" data-roomId= <%=room.id%> >
     <% building = Building.find(room.building_id) %>
     <% faciltyName = FacilityType.find(room.facilitytype_id).ftype%>
