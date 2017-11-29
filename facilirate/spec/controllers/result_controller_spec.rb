@@ -4,7 +4,7 @@ describe ResultController do
 
   it "GET #showAll" do
     allRoom = Room.all
-    get :showAll
+    get :showResult
     assigns(:rooms) == ([allRoom])
   end
   
