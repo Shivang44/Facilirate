@@ -36,19 +36,20 @@
     <tbody>
 
     <%@finalResult.each do |val|%>
-    <tr class="rowselect" data-roomId= <%=val[4].ids[0]%> >
+    <tr class="rowselect" data-roomId= <%=val.id%> >
+     <% building = Building.find(val.building_id) %>
+    <% faciltyName = FacilityType.find(val.facilitytype_id).ftype%>
         <td>
-            <% puts val %>
-        <%=val[0].join('')%>
+        <%=val.roomNum%>
         </td>
         <td>
-        <%=val[1].join('')%>
+        <%=val.avgRating%>
         </td>
         <td>
-        <%=val[2].join('')%>
+        <%=building.name%>
         </td>
         <td>
-        <%=val[3].join('')%>
+        <%=faciltyName%>
         </td>
     </tr>
     <%end%>
