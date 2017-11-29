@@ -27,7 +27,10 @@
                 <p><label>This room does not currently have a review. Click the button above to add one.</label></p>
             <% else %>
                 <% if user_signed_in? %>
-                <%= render partial: "layouts/post", :collection => @reviews, locals: {user: current_user.email} %>
+                    <% @reviews.each do |review| %>
+                        <% username = User.find(review.user_id).email %>
+                        <%= render partial: "layouts/post", :object => review, locals: {user: username} %>
+                    <% end %>
                 <% end %>
             <% end %>
         </div>
