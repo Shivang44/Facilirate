@@ -9,7 +9,7 @@ class RoomPageController < ApplicationController
     @facility = @result.facilitytype_id
 
     @reviews = []
-    @reviews = (Review.where('room_id = ?', @roomParm))
+    @reviews = (Review.where('room_id = ?', params[:id]))
 
 end
 end
