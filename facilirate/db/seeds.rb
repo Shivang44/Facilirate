@@ -17,6 +17,14 @@ ftypes.each do |type|
     FacilityType.create(ftype:type)
 end
 
+
+# Create a default user
+user = User.new({email: 'brutus@osu.edu', password: 'password', password_confirmation: 'password'})
+user.save
+user = User.new({email: 'smith.1@osu.edu', password: 'password', password_confirmation: 'password'})
+user.save
+
+
 # This fetches all OSU buildings from https://www.osu.edu/map/buildingindex.php
 # and inserts into DB.
 # OSU building id's are in the range [001, 1260]
