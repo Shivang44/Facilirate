@@ -9,11 +9,14 @@ class RoomPageController < ApplicationController
 
     @avgReview = @result.avgRating
     @building = Building.find(@result.building_id).name
+    @buildinLong = Building.find(@result.building_id).longitude
+    @buildingLat = Building.find(@result.building_id).latitude
     @room = @result.roomNum
     @facility = @result.facilitytype_id
 
     @reviews = []
     @reviews = (Review.where('room_id = ?', params[:id])).order(created_at: :desc)
 
-end
+  end
+
 end

@@ -16,6 +16,10 @@
             <label>Facility Type:</label> <%=@facility%>
         </p>
         <%= link_to("Review This Room", '/facility/new', class:"normalizedLinks btn btn-default selections") %>
+        <div style='width: 800px;'>
+         <div id="map" style='width: 800px; height: 400px;'></div>
+        </div>
+
     </div>
     <hr>
 
@@ -34,3 +38,20 @@
         </div>
     </div>
 </div>
+
+<script>
+
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers([
+    {
+      "lat": <%=@buildinLong%>,
+      "lng": <%=@buildingLat%>,
+    }
+  ]);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
+    
+    
+</script>
