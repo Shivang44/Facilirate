@@ -5,7 +5,12 @@ ftypes = [
     "Bathroom",
     "Lab",
     "Other",
-    "Classroom"
+    "Classroom",
+    "Study Room",
+    "Dorm",
+    "Parking Garage",
+    "Recreational Facility",
+    "Dining Hall"
 ]
 
 ftypes.each do |type|

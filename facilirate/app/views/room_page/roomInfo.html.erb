@@ -13,7 +13,7 @@
         </p>
         <p>
             <label>Room:</label> <%=@room%>
-            <label>Facility Type:</label> <%=@facility%>
+            <label>Facility Type:</label> <%=FacilityType.find_by_id(@facility).ftype%>
         </p>
         <%= link_to("Review This Room", '/facility/new', class:"normalizedLinks btn btn-default selections") %>
         <div style='width: 800px;'>
