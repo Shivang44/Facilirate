@@ -16,3 +16,4 @@
 //= require auto-complete
 //= require_tree .
 //= require stupidtable.min
+//= require gmaps/google
