@@ -19,6 +19,25 @@ class FacilityController < ApplicationController
         review.destroy
         redirect_to(:back)
     end
+    
+    # Written by Hunter Bernhardt on 11/29/2017
+    def delete
+        postID = params[:id]
+        review = Review.find(postID)
+        room = Room.find(review.room_id)
+        allReviews = Review.where('room_id = ?', room.id)
+        currTotal = room.avgRating * allReviews.length
+        currTotal = currTotal - review.rating
+        if(allReviews.length - 1 > 0) then
+            currTotal = currTotal / (allReviews.length - 1)
+        else
+            currTotal = 0.0
+        end
+        room.avgRating = currTotal
+        room.save
+        review.destroy
+        redirect_to(:back)
+    end
 
 
     # Returns a blank form to create a review for a facility
