@@ -20,24 +20,6 @@ class FacilityController < ApplicationController
         redirect_to(:back)
     end
 
-    # Written by Hunter Bernhardt on 11/29/2017
-    def delete
-        postID = params[:id]
-        review = Review.find(postID)
-        room = Room.find(review.room_id)
-        allReviews = Review.where('room_id = ?', room.id)
-        currTotal = room.avgRating * allReviews.length
-        currTotal = currTotal - review.rating
-        if(allReviews.length - 1 > 0) then
-            currTotal = currTotal / (allReviews.length - 1)
-        else
-            currTotal = 0.0
-        end
-        room.avgRating = currTotal
-        room.save
-        review.destroy
-        redirect_to(:back)
-    end
 
     # Returns a blank form to create a review for a facility
     # Written by Shivang Saxena on 11/26/2017
@@ -103,6 +85,9 @@ class FacilityController < ApplicationController
         # Redirect user to resuts page
         redirect_to controller: 'home', action: 'index'
     end
+
+    #Used to update information about a review in the database
+    # Written by Dilroop Raju on 11/26/2017
     def editReview
       # TODO: Do a server-side validation of all params in addition to client side (html) validation
           # Also sanitize input -- escape any javascript and html
@@ -134,7 +119,8 @@ class FacilityController < ApplicationController
       # Redirect user to results page
       redirect_to controller: 'room_page', action: 'roomInfo', id: roomId
     end
-
+    #Used to gather information about a review, to display them on an edit page
+    # Written by Dilroop Raju on 11/28/2017
     def show
       if !user_signed_in?
           redirect_to controller: 'user', action: 'notLoggedIn'
