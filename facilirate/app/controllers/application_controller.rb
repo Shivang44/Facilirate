@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
         #redirect_to "/result/showAll" #nothing was given
         @result = Room.all
     end
-
+    @result = @result.pluck(:id)
     return @result
 
   end
