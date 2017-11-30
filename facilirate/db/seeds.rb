@@ -18,26 +18,31 @@ rooms = [
         "building" => 169,
         "roomNum" => "369",
         "type" => 4,
+        "avgRating" => 4
     },
     {
         "building" => 19,
         "roomNum" => "112",
         "type" => 4,
+        "avgRating" => 5
     },
     {
         "building" => 169,
         "roomNum" => "317",
         "type" => 4,
+        "avgRating" => 3.5
     },
     {
         "building" => 51,
         "roomNum" => "N/A",
         "type" => 5,
+        "avgRating" => 5
     },
     {
         "building" => 35,
         "roomNum" => "Second Floor Study Room",
-        "type" => 5
+        "type" => 5,
+        "avgRating" => 5
     }
 ]
 
