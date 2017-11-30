@@ -55,7 +55,7 @@
             <%=val.roomNum%>
         </td>
         <td>
-            <%=avgReview%>
+            <%=avgReview.round(1)%>
         </td>
         <td class="buildingCol" data-latitude="<%= building.latitude%>" data-longitude="<%= building.longitude %>">
             <%=building.name%>
