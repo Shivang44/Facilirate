@@ -132,7 +132,7 @@ class FacilityController < ApplicationController
       currentRoom.save
 
       # Redirect user to results page
-      redirect_to controller: 'room_page', action: 'roomInfo', id: params[:id]
+      redirect_to controller: 'room_page', action: 'roomInfo', id: roomId
     end
 
     def show
