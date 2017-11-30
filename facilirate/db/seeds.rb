@@ -103,6 +103,12 @@ end
 rooms.each do |room|
     Review.create(room:roomNum["roomNum"], avgRating:0, building_id:review["building"], facilitytype_id:review["type"])
 end
+# Create a default user
+user = User.new({email: 'brutus@osu.edu', password: 'password', password_confirmation: 'password'})
+user.save
+user = User.new({email: 'smith.1@osu.edu', password: 'password', password_confirmation: 'password'})
+user.save
+
 
 # This fetches all OSU buildings from https://www.osu.edu/map/buildingindex.php
 # and inserts into DB.
