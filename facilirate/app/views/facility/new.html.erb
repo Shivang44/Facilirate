@@ -15,13 +15,13 @@
     <label class="input-header">
         Enter the building name
     </label>
-    <%= text_field_tag(:building, "", class:"form-control") %>
+    <%= text_field_tag(:building, "", class:"form-control", required: true) %>
     <br />
 
     <label class="input-header">
         Enter the room number
     </label>
-    <%= text_field_tag(:room, "", class:"form-control") %>
+    <%= text_field_tag(:room, "", class:"form-control", required: true) %>
     <br />
 
     <label class="input-header">
@@ -33,7 +33,7 @@
     <label class="input-header">
         Enter the review
     </label>
-    <%= text_area_tag(:review, "", class:"form-control") %>
+    <%= text_area_tag(:review, "", class:"form-control", required: true) %>
     <br />
 
     <label class="input-header">
