@@ -41,11 +41,21 @@
     <tr class="rowselect" data-roomId= <%=val.id%> >
      <% building = Building.find(val.building_id) %>
     <% faciltyName = FacilityType.find(val.facilitytype_id).ftype%>
+
+    <%@reviews = (Review.where('room_id = ?', val.id)).order(created_at: :desc)
+
+    @numberOfReviews = @reviews.length
+    if @numberOfReviews != 0 then
+        avgReview = (@reviews.reduce(0) { |sum, current| sum + current.rating }) / @numberOfReviews.to_f
+    else
+        avgReview = 0.0
+    end %>
+
         <td>
             <%=val.roomNum%>
         </td>
         <td>
-            <%=val.avgRating%>
+            <%=avgReview%>
         </td>
         <td class="buildingCol" data-latitude="<%= building.latitude%>" data-longitude="<%= building.longitude %>">
             <%=building.name%>
@@ -104,7 +114,7 @@
           alert('Could not get location. Make sure you are on a WiFi network. Distance to user will not be shown.');
           $("#retrieveResultsText").hide();
           $("#resultsTable").toggleClass('hidden');
-          shownError = true;          
+          shownError = true;
       }
     };
 
