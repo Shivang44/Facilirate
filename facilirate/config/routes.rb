@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   get 'user' => "user#refresh"
 
+  get 'error' => 'error#index'
+
   # Gets an empty form to add a review
   get 'facility/new'
 

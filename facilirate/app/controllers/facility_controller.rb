@@ -40,10 +40,9 @@ class FacilityController < ApplicationController
     # result of calling this action: redirection facility review of this id
     # Written by Shivang Saxena on 11/27/2017
     def create
-        # TODO: Do a server-side validation of all params in addition to client side (html) validation
-            # Also sanitize input -- escape any javascript and html
-        # TODO: Add validations/constrictions to DB
-        building = params[:building]
+
+
+        buildingName = params[:building]
         room = params[:room]
         facilityType = params[:facility]
         review = params[:review]
@@ -52,7 +51,17 @@ class FacilityController < ApplicationController
 
         # Create room if it is not already in DB
         if Room.where(roomNum: room).count == 0
-            buildingId = Building.where(name: building).first.id # TODO: Validate building id found
+            building = Building.where(name: buildingName)
+
+            # Validate a valid building name
+            if building.count == 0
+                # User did not select one of the buildings from the suggested drop down
+                flash[:notice] = "You did not select a valid building name. Please make sure you select a building from the drop down suggestions."
+                redirect_to '/error'
+                return
+            end
+
+            buildingId = building.first.id
             facilityTypeId = FacilityType.where(ftype: facilityType).first.id
             Room.create(roomNum: room, avgRating: 0, building_id: buildingId, facilitytype_id: facilityTypeId)
         end
@@ -69,7 +78,6 @@ class FacilityController < ApplicationController
         # Update rating average for room
         currentRoom = Room.find(roomId)
         currentRoom.save
-
 
         # Redirect user to resuts page
         redirect_to controller: 'home', action: 'index'

@@ -9,10 +9,8 @@
     <div class='roomDetails'>
         <h1><%=@building%></h1>
         <p>
-            <label>Average Rating:</label> <%=@avgReview%>
-        </p>
-        <p>
-            <label>Room:</label> <%=@room%>
+            <label>Average Rating:</label> <%=@avgReview%><br />
+            <label>Room:</label> <%=@room%><br />
             <label>Facility Type:</label> <%=FacilityType.find_by_id(@facility).ftype%>
         </p>
         <div style='width:40%;position:absolute; top: 25px; right: 25px; margin-bottom: 250px;'>
