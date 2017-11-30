@@ -106,7 +106,7 @@ reviews.each do |review|
 end
 
 rooms.each do |room|
-    Room.create(roomNum:room["roomNum"], avgRating:0, building_id:room["building"], facilitytype_id:room["type"])
+    Room.create(roomNum:room["roomNum"], avgRating:room["avgRating"], building_id:room["building"], facilitytype_id:room["type"])
 end
 # Create a default user
 user = User.new({email: 'brutus@osu.edu', password: 'password', password_confirmation: 'password'})

@@ -16,14 +16,14 @@
             <label>Facility Type:</label> <%=FacilityType.find_by_id(@facility).ftype%>
         </p>
         <div style='position:absolute; top: 25px; right: 25px; margin-bottom: 250px;'>
-            <div id="map" style='width: 500px; height: 300px;'></div>
+            <div id="map" style='width: 300px; height: 200px;'></div>
         </div>
 
         <%= link_to("Review This Room", '/facility/new', class:"normalizedLinks btn btn-default selections") %>
     </div>
 
     <div class='roomDetails'>
-        <h1 style="margin-top: 200px;">Facility Reviews</h1>
+        <h1 style="margin-top: 50px;">Facility Reviews</h1>
         <div>
             <% if @reviews == nil || @reviews.length == 0 then %>
                 <hr />
@@ -50,6 +50,8 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
   ]);
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
+  handler.getMap().setZoom(17);
+
 });
 
 
