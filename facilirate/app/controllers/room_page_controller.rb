@@ -1,7 +1,7 @@
 class RoomPageController < ApplicationController
 
-  #Gets information for a particular room and creates a page for it
-  #Written by Dilroop Raju on 11/26/2017
+  # Gets information for a particular room and creates a page for it
+  # Written by Dilroop Raju on 11/26/2017
   # Edited by Hunter Bernhardt on 11/30/17 to have an updated average rating
   def roomInfo
 
