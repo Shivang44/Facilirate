@@ -35,39 +35,35 @@ class FacilityController < ApplicationController
         end
     end
 
-    # actually creates review for the specified facility
-    # it takes in: rating+review, room_id, user_info
-    # result of calling this action: redirection facility review of this id
+    # Given the review parameters in the payload, creates a review in the Database.
+    # If the room is not already present in the DB, also creates the room.
+    # Finally, redirects user to the home page.
     # Written by Shivang Saxena on 11/27/2017
     def create
-
-
         buildingName = params[:building]
         room = params[:room]
         facilityType = params[:facility]
         review = params[:review]
         rating = params[:rating]
 
+        # Validate the building is in our DB
+        building = Building.where(name: buildingName)
+        if building.count == 0
+            # User did not select one of the buildings from the suggested drop down
+            flash[:notice] = "You did not select a valid building name. Please make sure you select a building from the drop down suggestions."
+            redirect_to '/error'
+            return
+        end
+        buildingId = building.first.id
 
         # Create room if it is not already in DB
-        if Room.where(roomNum: room).count == 0
-            building = Building.where(name: buildingName)
-
-            # Validate a valid building name
-            if building.count == 0
-                # User did not select one of the buildings from the suggested drop down
-                flash[:notice] = "You did not select a valid building name. Please make sure you select a building from the drop down suggestions."
-                redirect_to '/error'
-                return
-            end
-
-            buildingId = building.first.id
+        if Room.where(roomNum: room, building_id: buildingId).count == 0
             facilityTypeId = FacilityType.where(ftype: facilityType).first.id
-            Room.create(roomNum: room, avgRating: 0, building_id: buildingId, facilitytype_id: facilityTypeId)
+            Room.create(roomNum: room, building_id: buildingId, facilitytype_id: facilityTypeId)
         end
 
         # Add review
-        roomId = Room.where(roomNum: room).first.id
+        roomId = Room.where(roomNum: room, building_id: buildingId).first.id
         Review.create(review: review, rating: rating, user_id: current_user.id, room_id: roomId)
 
         # Get the number of reviews for this room so we can calculate the new average
