@@ -54,7 +54,7 @@ class FacilityController < ApplicationController
         if Room.where(roomNum: room).count == 0
             buildingId = Building.where(name: building).first.id # TODO: Validate building id found
             facilityTypeId = FacilityType.where(ftype: facilityType).first.id
-            Room.create(roomNum: room, avgRating: 0, building_id: buildingId, facilitytype_id: facilityTypeId)
+            Room.create(roomNum: room, building_id: buildingId, facilitytype_id: facilityTypeId)
         end
 
         # Add review
