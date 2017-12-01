@@ -40,7 +40,7 @@
     Nishant Rimal (Testing Manager):
 
 
-    Hunter Bernhardt (Coding Manager):
+    Hunter Bernhardt (Coding Manager): Wrote the controller code to find all buildings and facility types for the home page, give the information needed from the table for the user's account page and to delete reviews from the table. Also designed the HTML/CSS to format most of the pages to be similar and wrote the partial for the posts to have the same format. On top of that, pair programmed with Shivang to set up the initial tables for the project and write the seed file to have preset reviews.
 
     Shivang Saxena (Documentation Manager):
 
