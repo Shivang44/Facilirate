@@ -55,7 +55,7 @@
             <%=val.roomNum%>
         </td>
         <td>
-            <%=avgReview%>
+            <%=avgReview.round(1)%>
         </td>
         <td class="buildingCol" data-latitude="<%= building.latitude%>" data-longitude="<%= building.longitude %>">
             <%=building.name%>
@@ -78,8 +78,6 @@
 </div>
 </div>
 </div>
-
-  <%# $.ajax("/users/render_read");  ajax call need to call appropriate method%>
 <script>
     $(".rowselect").click(function() {
         var roomId = $(this).attr('data-roomId');
@@ -89,7 +87,7 @@
     });
 
 
-    /* Algorithm used from http://www.geodatasource.com/developers/javascript */
+    /* Longitude/Latitude distance algorithm used from http://www.geodatasource.com/developers/javascript */
     function distance(lat1, lon1, lat2, lon2) {
         var radlat1 = Math.PI * lat1/180;
         var radlat2 = Math.PI * lat2/180;
@@ -108,6 +106,7 @@
         navigator.geolocation.getCurrentPosition(calculateDistances, locationError, {timeout: 5000});
     }
 
+    // If geolocation API is unavailable for some reason (e.g. times out), show an error message and enable results table.
     var shownError = false;
     function locationError(err) {
       if (!shownError) {
@@ -118,7 +117,8 @@
       }
     };
 
-
+    // For each building, calculate the distance to user. Relatively fast operation (linear time), but still takes
+    // a noticable amount of time. Because of this, we show a loading text until results are finished calculating.
     function calculateDistances(userPosition) {
         var userLatitude = userPosition.coords.latitude;
         var userLongitude = userPosition.coords.longitude;
