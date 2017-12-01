@@ -31,13 +31,13 @@
 
 ###Test Plan
 
-    The team tested the website by each validating the code of each built page and clicking each of the links on every page. Futhermore, the team met to agree upon design decisions and were approved as a group to serve as the "testing" of the design.
+    The team tested the website by each validating the code of each built page and clicking each of the links on every page. The team also met to agree upon design decisions and were approved as a group to serve as the "testing" of the design. Lastly, team also used Rspec to do some testing in result controller which can be ran using rspec command inside facilirate folder.
 
 ### Contributions
 
     Matt Deavers (Overall Project Manager): Implemented Devise user account management, repaired and cleaned up controllers and views throughout. Repaired user account creation with error, then refresh on resulting page requesting an invalid path via routing to user_controller#refresh. 
 
-    Nishant Rimal (Testing Manager):
+    Nishant Rimal (Testing Manager): Wrote controller code to display all the rooms from the search done by the user. Used a helper method to apply parameter of the search and obtain rooms from the model with series of if else statements. Created the view for resuls page and added design/style. Used google map API to implement google maps to show location of rooms. Added minor design/css to home page, and created test file for testing result controller. 
 
 
     Hunter Bernhardt (Coding Manager): Wrote the controller code to find all buildings and facility types for the home page, give the information needed from the table for the user's account page and to delete reviews from the table. Also designed the HTML/CSS to format most of the pages to be similar and wrote the partial for the posts to have the same format. On top of that, pair programmed with Shivang to set up the initial tables for the project and write the seed file to have preset reviews.
