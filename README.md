@@ -35,13 +35,13 @@
 
 ### Contributions
 
-    Matt Deavers (Overall Project Manager): Implemented Devise user account management, repaired and cleaned up controllers and views throughout. Repaired user account creation with error, then refresh on resulting page requesting an invalid path via routing to user_controller#refresh. 
+    Matt Deavers (Overall Project Manager): Implemented Devise user account management, repaired and cleaned up controllers and views throughout. Repaired user account creation with error, then refresh on resulting page requesting an invalid path via routing to user_controller#refresh.
 
-    Nishant Rimal (Testing Manager): Wrote controller code to display all the rooms from the search done by the user. Used a helper method to apply parameter of the search and obtain rooms from the model with series of if else statements. Created the view for resuls page and added design/style. Used google map API to implement google maps to show location of rooms. Added minor design/css to home page, and created test file for testing result controller. 
+    Nishant Rimal (Testing Manager): Wrote controller code to display all the rooms from the search done by the user. Used a helper method to apply parameter of the search and obtain rooms from the model with series of if else statements. Created the view for results page and added design/style. Used google map API to implement google maps to show location of rooms. Added minor design/css to home page, and created test file for testing result controller.
 
 
     Hunter Bernhardt (Coding Manager): Wrote the controller code to find all buildings and facility types for the home page, give the information needed from the table for the user's account page and to delete reviews from the table. Also designed the HTML/CSS to format most of the pages to be similar and wrote the partial for the posts to have the same format. On top of that, pair programmed with Shivang to set up the initial tables for the project and write the seed file to have preset reviews.
 
     Shivang Saxena (Documentation Manager): Wrote most of controller code in facility controller, including methods to render blank forms for creating a review, validating review data, and inserting review into database. Also debugged and refactored other controllers, including refactoring the result controller and debugging the edit review methods. Implemented a scrape functionanlity in seed.rb that fetches all buildings and their longitude and latitudes from the OSU database, and wrote JavaScript code to calculate distances to user. Helped create HTML/CSS for various pages throughout app.
 
-    Dil Raju
+    Dil Raju: Wrote controller code to display individual webpages for each room. Wrote edit page and controller code to allow editing of previous reviews by users. Designed view for room_page as well as initial CSS stylings for most user and devise pages. Added minor styling changes to views and general edits and fixes to controllers.
