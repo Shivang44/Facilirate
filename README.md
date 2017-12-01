@@ -10,7 +10,7 @@
 ### Project Description
     For this project, the team created an OSU facilities rating site, a.k.a. Facilirate. Using Devise to manage user accounts,  
 
-###Running the Project
+### Running the Project
 
     The following steps should be followed in order to run this project (Also see the Notes section below):
 
