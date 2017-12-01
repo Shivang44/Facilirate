@@ -8,10 +8,25 @@
 * Documentation Manager: Shivang Saxena
 
 ###Project Description
-
+    For this project, the team created an OSU facilities rating site, a.k.a. Facilirate. Using Devise to manage user accounts,  
 
 ###Running the Project
 
+    The following steps should be followed in order to run this project (Also see the Notes section below):
+
+    1. Clone the repository
+    2. In the terminal, navigate to the facilirate directory and run the following commands
+        bundle install
+        rake db:migrate
+        rake db:seed
+        rails s
+    3. In the browser, navigate to localhost:3000
+    4. Create an account using the link at the top right of the home page
+
+    Once these steps are complete, you will be logged in and on the home page. From here, you can search for rooms and post reviews (a room will not appear unless a review has been created for it already! Note that room numbers are not confirmed as existing to allow for unusual rooms and rooms without numbers). From your account page, you can edit your account and edit/delete posts you have made.
+
+###Notes
+    -When entering fields into the reviews/search fields, click on the auto-complete text to auto-fill. DO NOT press enter, as this will submit the entire form as is. (And you will receive an error message if you were making a post that was incomplete at the time you pressed enter.)
 
 
 ###Test Plan
@@ -20,7 +35,7 @@
 
 ### Contributions
 
-    Matt Deavers (Overall Project Manager):
+    Matt Deavers (Overall Project Manager): Implemented Devise user account management, repaired and cleaned up controllers and views throughout. Repaired user account creation with error, then refresh on resulting page requesting an invalid path via routing to user_controller#refresh. 
 
     Nishant Rimal (Testing Manager):
 
