@@ -1,6 +1,7 @@
 class UserController < ApplicationController
   # Hunter Bernhardt
   # Updated by Shivang Saxena on 11/27/2017 to include number of posts and avg rating for user
+  # Updated by Matthew Deavers on 11/27/2017 to redirect requests for /user to a signup or profile page
   def viewProfile
       if !user_signed_in?
           redirect_to controller: 'user', action: 'notLoggedIn'
