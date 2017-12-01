@@ -42,6 +42,6 @@
 
     Hunter Bernhardt (Coding Manager): Wrote the controller code to find all buildings and facility types for the home page, give the information needed from the table for the user's account page and to delete reviews from the table. Also designed the HTML/CSS to format most of the pages to be similar and wrote the partial for the posts to have the same format. On top of that, pair programmed with Shivang to set up the initial tables for the project and write the seed file to have preset reviews.
 
-    Shivang Saxena (Documentation Manager):
+    Shivang Saxena (Documentation Manager): Wrote most of controller code in facility controller, including methods to render blank forms for creating a review, validating review data, and inserting review into database. Also debugged and refactored other controllers, including refactoring the result controller and debugging the edit review methods. Implemented a scrape functionanlity in seed.rb that fetches all buildings and their longitude and latitudes from the OSU database, and wrote JavaScript code to calculate distances to user. Helped create and HTML/CSS for various pages throughout app.
 
     Dil Raju
