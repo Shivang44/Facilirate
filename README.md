@@ -23,7 +23,7 @@
     3. In the browser, navigate to localhost:3000
     4. Create an account using the link at the top right of the home page
 
-    Once these steps are complete, you will be logged in and on the home page. From here, you can search for rooms and post reviews (a room will not appear unless a review has been created for it already! Note that room numbers are not confirmed as existing to allow for unusual rooms and rooms without numbers). From your account page, you can edit your account and edit/delete posts you have made.
+    Once these steps are complete, you will be logged in and on the home page. From here, you can search for rooms and post reviews (a room will not appear unless a review has been created for it already! Note that room numbers are not confirmed as existing to allow for unusual rooms and rooms without numbers). From your account page, you can edit your account and edit/delete posts you have made. Please note, location works best when connected to the WiFi. Location will not be accurated when connected via ethernet.
 
 ### Notes
     -When entering fields into the reviews/search fields, click on the auto-complete text to auto-fill. DO NOT press enter, as this will submit the entire form as is. (And you will receive an error message if you were making a post that was incomplete at the time you pressed enter.)
