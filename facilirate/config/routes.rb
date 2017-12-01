@@ -28,14 +28,8 @@ Rails.application.routes.draw do
   # Gets the review data for a specific facility
   get 'facility/:facilityId' => 'facility#show'
 
-
-  get 'result/showResult/:facility/:building/:room' => "result#showResult"
-
+  #routes to result controller, and showResult method when 'result/showResult' is called
   get 'result/showResult' => "result#showResult"
-
-  get 'result/showAll' => "result#showAll"
-
-  get 'result/filterResult'
 
   root 'home#index'
 

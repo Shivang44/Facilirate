@@ -8,16 +8,22 @@ describe ResultController do
     assigns(:rooms) == ([allRoom])
   end
   
+  render_views
+
+  it "renders the :showAll view" do
+    get :showResult
+    expect(response).to render_template("showResult") 
+  end
   
   it "renders the :showAll view" do
-    get :showAll
-     
-    expect(response).to render_template("showAll") 
-  end
-  render_views
-  it "renders the :showAll view" do
-    get :showAll
+    get :showResult
     expect(response.body).to match("Room")
+  end
+
+  it "routes /result.showResult to the result controller" do
+    expect(:get => "/result/showResult").to route_to(
+      :controller => "result", 
+      :action => "showResult")
   end
 
 end
