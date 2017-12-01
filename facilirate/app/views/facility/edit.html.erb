@@ -6,12 +6,7 @@
             <h2>Review a Room</h2>
 
 <form action="/facility/editReview" method="POST">
-    <!-- TODO:
-    - Validate all these things
-    - Make the building name and room number auto complete
-    - Get facility types via model and make facility type a drop down
-    - Fix look and feel to match home page by using bootstrap
-    -->
+  
     <% @building = params[:building] %>
     <% @room = params[:room] %>
     <% @facilityType = params[:facility] %>
